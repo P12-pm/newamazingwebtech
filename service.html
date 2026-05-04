@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Service — Amazing WebTech</title>
+    <meta name="description" content="Professional digital services by Amazing WebTech." />
+
+    <link rel="preconnect" href="https://api.fontshare.com" />
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" />
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            background: #000;
+            font-family: 'General Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            color: #fff;
+        }
+
+        ::selection {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .hero {
+            position: relative;
+            width: 100%;
+            min-height: 60vh;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 2; /* Increased z-index to be above video */
+        }
+
+        .hero__video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero__video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* 50% black overlay to ensure text is readable */
+            z-index: 1;
+        }
+
+        .navbar {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 120px;
+            width: 100%;
+            transition: background 0.3s, backdrop-filter 0.3s, -webkit-backdrop-filter 0.3s;
+        }
+
+        .navbar__left {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .navbar__logo {
+            display: flex;
+            align-items: center;
+            width: 187px;
+            height: 25px;
+            flex-shrink: 0;
+            text-decoration: none;
+        }
+
+        .navbar__logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .navbar__links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .navbar__link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: opacity 0.2s ease;
+        }
+
+        .navbar__link:hover {
+            opacity: 0.75;
+        }
+
+        .btn-pill {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            border: 0.6px solid rgba(255, 255, 255, 1);
+            background: transparent;
+            cursor: pointer;
+            text-decoration: none;
+            outline: none;
+            transition: opacity 0.2s ease, transform 0.15s ease;
+            overflow: hidden;
+        }
+
+        .btn-pill:hover {
+            opacity: 0.88;
+            transform: translateY(-1px);
+        }
+
+        .btn-pill:active {
+            transform: translateY(0);
+        }
+
+        .btn-pill::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 14px;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 70%);
+            filter: blur(4px);
+            border-radius: 50%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .btn-pill__inner {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 11px 29px;
+            white-space: nowrap;
+        }
+
+        .btn-pill--dark .btn-pill__inner {
+            background: #000;
+            color: #fff;
+        }
+
+        .btn-pill--light {
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .btn-pill--light .btn-pill__inner {
+            background: #fff;
+            color: #000;
+        }
+
+        .hero__content {
+            position: relative;
+            z-index: 10;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 24px 80px;
+            gap: 20px;
+            font-family: 'Copperplate', 'Papyrus', fantasy;
+        }
+
+        .hero__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid rgba(255, 255, 255, 0.20);
+            border-radius: 20px;
+            padding: 7px 14px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #fff;
+            white-space: nowrap;
+        }
+
+        .hero__badge-dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #fff;
+            flex-shrink: 0;
+        }
+
+        .hero__heading {
+            font-size: 56px;
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            background: linear-gradient(144.5deg, #ffffff 28%, rgba(0, 0, 0, 0) 115%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .hero__subtitle {
+            max-width: 650px;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 1.65;
+            color: rgba(255, 255, 255, 0.70);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 20;
+        }
+
+        .mobile-menu-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.97);
+            z-index: 100;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu.open {
+            display: flex;
+            opacity: 1;
+        }
+
+        .mobile-menu a {
+            font-size: 28px;
+            font-weight: 500;
+            color: #fff;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .mobile-menu a:hover {
+            opacity: 0.7;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu-close svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        /* ── Navbar Dropdown ── */
+        .navbar__dropdown-wrap {
+            position: relative;
+        }
+
+        .navbar__dropdown-arrow {
+            transition: transform 0.3s;
+        }
+
+        .navbar__dropdown-wrap:hover .navbar__dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .navbar__dropdown {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(8px);
+            min-width: 280px;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 16px 8px 8px;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+            z-index: 100;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.03);
+        }
+
+        .navbar__dropdown::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 0;
+            right: 0;
+            height: 8px;
+        }
+
+        .navbar__dropdown::after {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 12px;
+            height: 12px;
+            background: rgba(10, 10, 10, 0.95);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-left: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .navbar__dropdown-wrap:hover .navbar__dropdown,
+        .navbar__dropdown-wrap.open .navbar__dropdown {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s, padding-left 0.2s;
+            cursor: pointer;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+            color: #fff;
+            padding-left: 20px;
+        }
+
+        .dropdown-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+            transition: background 0.2s, border-color 0.2s, transform 0.2s;
+        }
+
+        .dropdown-item:hover .dropdown-icon {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.12);
+            transform: scale(1.08);
+        }
+
+        .dropdown-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .dropdown-text span:first-child {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .dropdown-text span:last-child {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.35);
+            line-height: 1.3;
+        }
+
+        .dropdown-item:hover .dropdown-text span:last-child {
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.06);
+            margin: 4px 8px;
+        }
+
+        .dropdown-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: rgba(255, 255, 255, 0.3);
+            padding: 12px 16px 6px;
+            font-weight: 600;
+        }
+
+        /* Mobile dropdown */
+        .mobile-dropdown-toggle {
+            display: none;
+        }
+
+        @media (max-width: 1024px) {
+            .navbar__dropdown {
+                min-width: 260px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .navbar__dropdown-wrap:hover .navbar__dropdown {
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+                transform: translateX(-50%) translateY(8px);
+            }
+
+            .navbar__dropdown-wrap.open .navbar__dropdown {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+                transform: translateX(-50%) translateY(0);
+            }
+
+            .mobile-dropdown-toggle {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                background: none;
+                border: none;
+                color: rgba(255, 255, 255, 0.7);
+                font-family: inherit;
+                font-size: 28px;
+                font-weight: 500;
+                cursor: pointer;
+                transition: color 0.2s;
+            }
+
+            .mobile-dropdown-toggle:hover { color: #fff; }
+
+            .mobile-dropdown-toggle svg {
+                width: 20px;
+                height: 20px;
+                transition: transform 0.3s;
+            }
+
+            .mobile-dropdown-toggle.open svg {
+                transform: rotate(180deg);
+            }
+        }
+
+        /* ── Responsive ── */
+        .section {
+            padding: 100px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-subtitle {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 40px;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .section-title span {
+            background: linear-gradient(144.5deg, #ffffff 28%, rgba(255, 255, 255, 0.3) 115%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .overview-content p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .overview-image {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+        }
+
+        .overview-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .overview-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.3) 0%, transparent 40%);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 24px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: transform 0.3s, background 0.3s, border-color 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .feature-icon {
+            font-size: 36px;
+            margin-bottom: 24px;
+            width: 72px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 20px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.6;
+        }
+
+        .cta-banner {
+            padding: 100px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-banner .section-title {
+            margin-bottom: 20px;
+        }
+
+        .cta-banner p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 550px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .footer {
+            background: #000;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 60px 24px 30px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        @media (max-width: 1024px) {
+            .navbar {
+                padding: 20px 60px;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .navbar {
+                padding: 20px 24px;
+            }
+
+            .navbar__links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero__heading {
+                font-size: 36px;
+            }
+
+            .hero__content {
+                padding: 80px 24px 60px;
+            }
+
+            .section {
+                padding: 70px 24px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .overview-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* ── Animations ── */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    
+        /* ── Modern Floating Navbar ── */
+        .navbar-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 24px;
+            z-index: 1000;
+            transition: padding 0.4s ease;
+            pointer-events: none;
+        }
+
+        .navbar-wrapper.scrolled {
+            padding: 10px 24px;
+        }
+        
+        .navbar-new {
+            pointer-events: auto;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(15, 15, 15, 0.65);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 9999px;
+            padding: 12px 16px 12px 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .navbar-wrapper.scrolled .navbar-new {
+            background: rgba(10, 10, 10, 0.85);
+            border-color: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            height: 60px;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .nav-logo:hover {
+            transform: scale(1.02);
+        }
+
+        .nav-logo img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 9999px;
+            transition: color 0.3s, background 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-link.active {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #fff, #e0e0e0);
+            color: #000;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 10px 24px;
+            border-radius: 9999px;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.15);
+        }
+
+        @media (max-width: 1024px) {
+            .navbar-wrapper {
+                padding: 16px;
+            }
+            .navbar-wrapper.scrolled {
+                padding: 10px 16px;
+            }
+            .navbar-new {
+                padding: 10px 14px 10px 20px;
+            }
+            .nav-link {
+                padding: 8px 12px;
+            }
+            .nav-btn {
+                padding: 8px 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .nav-btn {
+                display: none;
+            }
+        }
+
+    
+        /* ── 1. Custom Cursor ── */
+        .cursor-dot {
+            position: fixed; top: 0; left: 0; z-index: 99999;
+            width: 6px; height: 6px; border-radius: 50%;
+            background: #fff; pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s, background 0.2s;
+        }
+
+        .cursor-outline {
+            position: fixed; top: 0; left: 0; z-index: 99998;
+            width: 36px; height: 36px; border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s ease, height 0.3s ease, border-color 0.3s, background 0.3s;
+        }
+
+        .cursor-dot.hovering {
+            width: 40px; height: 40px;
+            background: rgba(255, 255, 255, 0.08);
+            mix-blend-mode: difference;
+        }
+
+        .cursor-outline.hovering {
+            width: 60px; height: 60px;
+            border-color: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        @media (pointer: coarse) {
+            .cursor-dot, .cursor-outline { display: none !important; }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-outline" id="cursorOutline"></div>
+
+
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close Menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <a href="index.html" onclick="closeMobileMenu()">Home</a>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+            <button class="mobile-dropdown-toggle" id="mobileDropdownBtn" onclick="toggleMobileDropdown()">
+                Services
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div id="mobileDropdownList" style="display:none;flex-direction:column;align-items:center;gap:14px;padding:10px 0;">
+                <a href="service.html?page=web-design" onclick="closeMobileMenu()" style="font-size:20px;">💻 Website Design</a>
+                <a href="service.html?page=ui-ux" onclick="closeMobileMenu()" style="font-size:20px;">✨ UI/UX Design</a>
+                <a href="service.html?page=mobile-app" onclick="closeMobileMenu()" style="font-size:20px;">📱 Mobile App</a>
+                <a href="service.html?page=branding" onclick="closeMobileMenu()" style="font-size:20px;">🎯 Branding</a>
+                <a href="service.html?page=digital-marketing" onclick="closeMobileMenu()" style="font-size:20px;">📈 Digital Marketing</a>
+                <a href="service.html?page=seo" onclick="closeMobileMenu()" style="font-size:20px;">🔍 SEO</a>
+                <a href="service.html?page=aeo" onclick="closeMobileMenu()" style="font-size:20px;">🗣️ AEO</a>
+                <a href="service.html?page=geo" onclick="closeMobileMenu()" style="font-size:20px;">🤖 GEO</a>
+                <a href="service.html?page=video-2d-3d" onclick="closeMobileMenu()" style="font-size:20px;">🎬 2D/3D Video</a>
+                <a href="service.html?page=content-creator" onclick="closeMobileMenu()" style="font-size:20px;">✍️ Content Creator</a>
+                <a href="service.html?page=printing" onclick="closeMobileMenu()" style="font-size:20px;">🖨️ Printing</a>
+                <a href="service.html?page=professional-email" onclick="closeMobileMenu()" style="font-size:20px;">📧 Professional Email</a>
+                <a href="service.html?page=hosting" onclick="closeMobileMenu()" style="font-size:20px;">☁️ Hosting</a>
+            </div>
+        </div>
+        <a href="about.html" onclick="closeMobileMenu()">About Us</a>
+        <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+    </div>
+
+    <section class="hero" aria-label="Page Hero">
+        <video id="heroVideo" class="hero__video" autoplay loop muted playsinline style="display: none;"></video>
+        <div id="heroVideoOverlay" class="hero__video-overlay" style="display: none;"></div>
+
+        
+        <!-- New Floating Premium Navbar -->
+        <div class="navbar-wrapper" id="navbarWrapper">
+            <nav class="navbar-new" role="navigation" aria-label="Primary Navigation">
+                <a href="index.html" class="nav-logo" aria-label="Amazing WebTech Home">
+                    <img src="logo2.png" alt="Amazing WebTech">
+                </a>
+                
+                <ul class="nav-links" role="list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="navbar__dropdown-wrap">
+                        <a href="service.html" class="nav-link active">
+                            Services
+                            <svg class="navbar__dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </a>
+                        <div class="navbar__dropdown">
+                            <div class="dropdown-label">Design & Development</div>
+                            <a href="service.html?page=web-design" class="dropdown-item">
+                                <div class="dropdown-icon">💻</div>
+                                <div class="dropdown-text">
+                                    <span>Website Design & Dev</span>
+                                    <span>Responsive, fast, scalable</span>
+                                </div>
+                            </a>
+                            <a href="service.html?page=ui-ux" class="dropdown-item">
+                                <div class="dropdown-icon">✨</div>
+                                <div class="dropdown-text">
+                                    <span>UI/UX Design</span>
+                                    <span>Intuitive & beautiful</span>
+                                </div>
+                            </a>
+                            <a href="service.html?page=mobile-app" class="dropdown-item">
+                                <div class="dropdown-icon">📱</div>
+                                <div class="dropdown-text">
+                                    <span>Mobile App</span>
+                                    <span>iOS, Android, cross-platform</span>
+                                </div>
+                            </a>
+                            <a href="service.html?page=branding" class="dropdown-item">
+                                <div class="dropdown-icon">🎯</div>
+                                <div class="dropdown-text">
+                                    <span>Corporate Branding</span>
+                                    <span>Identity & guidelines</span>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-label">Marketing & SEO</div>
+                            <a href="service.html?page=digital-marketing" class="dropdown-item">
+                                <div class="dropdown-icon">📈</div>
+                                <div class="dropdown-text">
+                                    <span>Digital Marketing</span>
+                                    <span>Ads, social, email, CRO</span>
+                                </div>
+                            </a>
+                            <a href="service.html?page=seo" class="dropdown-item">
+                                <div class="dropdown-icon">🔍</div>
+                                <div class="dropdown-text">
+                                    <span>SEO</span>
+                                    <span>Rank higher, grow faster</span>
+                                </div>
+                            </a>
+                            <a href="service.html?page=aeo" class="dropdown-item">
+                                <div class="dropdown-icon">🗣️</div>
+                                <div class="dropdown-text">
+                                    <span>AEO</span>
+                                    <span>Answer Engine Optimization</span>
+                                </div>
+                            </a>
+                            <a href="service.html?page=geo" class="dropdown-item">
+                                <div class="dropdown-icon">🤖</div>
+                                <div class="dropdown-text">
+                                    <span>GEO</span>
+                                    <span>Generative Engine Optimization</span>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-label">Content & Media</div>
+                            <a href="service.html?page=video-2d-3d" class="dropdown-item">
+                                <div class="dropdown-icon">🎬</div>
+                                <div class="dropdown-text">
+                                    <span>2D / 3D Video</span>
+                                    <span>Animation & production</span>
+                                </div>
+                            </a>
+                            <a href="service.html?page=content-creator" class="dropdown-item">
+                                <div class="dropdown-icon">✍️</div>
+                                <div class="dropdown-text">
+                                    <span>Content Creator</span>
+                                    <span>Videos, blogs, graphics</span>
+                                </div>
+                            </a>
+                            <a href="service.html?page=printing" class="dropdown-item">
+                                <div class="dropdown-icon">🖨️</div>
+                                <div class="dropdown-text">
+                                    <span>Printing Solutions</span>
+                                    <span>Cards, brochures, packaging</span>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-label">Infrastructure</div>
+                            <a href="service.html?page=professional-email" class="dropdown-item">
+                                <div class="dropdown-icon">📧</div>
+                                <div class="dropdown-text">
+                                    <span>Professional Email</span>
+                                    <span>Google Workspace, Microsoft</span>
+                                </div>
+                            </a>
+                            <a href="service.html?page=hosting" class="dropdown-item">
+                                <div class="dropdown-icon">☁️</div>
+                                <div class="dropdown-text">
+                                    <span>Web Hosting</span>
+                                    <span>Fast, secure, managed</span>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <a href="contact.html" class="nav-btn" aria-label="Get Started">Get Started</a>
+                    <button class="mobile-menu-btn" onclick="openMobileMenu()" aria-label="Open Menu">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+        </div>
+
+
+        <div class="hero__content">
+            <div class="hero__badge fade-in-up">
+                <span class="hero__badge-dot"></span>
+                <span id="heroBadgeText">Our Services</span>
+            </div>
+            <h1 class="hero__heading fade-in-up" id="heroHeading" style="transition-delay: 0.1s;">Service</h1>
+            <p class="hero__subtitle fade-in-up" id="heroSubtitle" style="transition-delay: 0.2s;">Description goes here.</p>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="section">
+        <div class="overview-grid">
+            <div class="overview-content fade-in-up">
+                <span class="section-subtitle">Overview</span>
+                <h2 class="section-title" style="margin-bottom:30px;"><span id="overviewTitle">What we offer</span></h2>
+                <p id="overviewText1">Overview paragraph one.</p>
+                <p id="overviewText2">Overview paragraph two.</p>
+            </div>
+            <div class="overview-image fade-in-up" style="transition-delay: 0.2s;">
+                <img id="overviewImage" src="https://picsum.photos/seed/awt-default/700/525.jpg" alt="Service Image"
+                    loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section" style="padding-top:0;">
+        <div class="section-header fade-in-up">
+            <span class="section-subtitle">Key Features</span>
+            <h2 class="section-title"><span>What you get</span></h2>
+        </div>
+        <div class="features-grid" id="featuresGrid">
+            <!-- Features injected dynamically -->
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="cta-banner fade-in-up">
+        <h2 class="section-title"><span>Ready to get started?</span></h2>
+        <p>Let's discuss how this service can transform your business. Get in touch today.</p>
+        <a href="contact.html" class="btn-pill btn-pill--light">
+            <span class="btn-pill__inner">Get A Free Quote</span>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <img src="logo-dark.png" alt="Amazing WebTech" style="height: 48px; margin-right: auto; margin-bottom: 15px;">
+            <p class="footer-text">&copy; 2026 Amazing Webtech. All Rights Reserved.</p>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        // ── Mobile Menu ──
+        function openMobileMenu() {
+            document.getElementById('mobileMenu').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMobileMenu() {
+            document.getElementById('mobileMenu').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // ── Desktop Navbar Dropdown ──
+        (function() {
+            var wraps = document.querySelectorAll('.navbar__dropdown-wrap');
+            wraps.forEach(function(wrap) {
+                var closeTimer;
+                wrap.addEventListener('mouseenter', function() {
+                    clearTimeout(closeTimer);
+                    wrap.classList.add('open');
+                });
+                wrap.addEventListener('mouseleave', function() {
+                    closeTimer = setTimeout(function() {
+                        wrap.classList.remove('open');
+                    }, 150);
+                });
+                var dropdown = wrap.querySelector('.navbar__dropdown');
+                if (dropdown) {
+                    dropdown.addEventListener('mouseenter', function() {
+                        clearTimeout(closeTimer);
+                    });
+                    dropdown.addEventListener('mouseleave', function() {
+                        closeTimer = setTimeout(function() {
+                            wrap.classList.remove('open');
+                        }, 150);
+                    });
+                }
+            });
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.navbar__dropdown-wrap')) {
+                    wraps.forEach(function(w) { w.classList.remove('open'); });
+                }
+            });
+        })();
+
+        // ── Mobile Dropdown Toggle ──
+        function toggleMobileDropdown() {
+            var btn = document.getElementById('mobileDropdownBtn');
+            var list = document.getElementById('mobileDropdownList');
+            btn.classList.toggle('open');
+            if (list.style.display === 'none' || !list.style.display) {
+                list.style.display = 'flex';
+            } else {
+                list.style.display = 'none';
+            }
+        }
+
+        // ── Navbar Scroll ──
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80) {
+                navbar.style.background = 'rgba(0, 0, 0, 0.8)';
+                navbar.style.backdropFilter = 'blur(20px)';
+                navbar.style.webkitBackdropFilter = 'blur(20px)';
+            } else {
+                navbar.style.background = 'transparent';
+                navbar.style.backdropFilter = 'none';
+                navbar.style.webkitBackdropFilter = 'none';
+            }
+        });
+
+        // ── Scroll Animations ──
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        function initAnimations() {
+            document.querySelectorAll('.fade-in-up:not(.visible)').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+
+        // ── Service Data ──
+        const services = {
+            'web-design': {
+                badge: 'Web Solutions',
+                heading: 'Website Design\n& Development',
+                heroVideo: 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260217_030345_246c0224-10a4-422c-b324-070b7c0eceda.mp4',
+                subtitle: 'We build stunning, responsive, and high-performing websites that convert visitors into loyal customers and drive real business growth.',
+                overviewTitle: 'Crafted for performance',
+                text1: 'Your website is your digital storefront. We design and develop custom, scalable websites tailored to your business goals — from high-converting landing pages to complex e-commerce platforms.',
+                text2: 'Using modern frameworks and best practices, we ensure every site loads fast, looks flawless on every device, and is optimized for search engines from day one.',
+                image: 'awt-web-design',
+                features: [
+                    { icon: '📱', title: 'Responsive Design', desc: 'Pixel-perfect layouts that look amazing on desktop, tablet, and mobile devices.' },
+                    { icon: '⚡', title: 'Lightning Fast', desc: 'Optimized for speed and Core Web Vitals to ensure the best user experience.' },
+                    { icon: '🔒', title: 'Secure & Scalable', desc: 'Built with the latest security standards and architectures that grow with you.' },
+                    { icon: '🛒', title: 'E-Commerce Ready', desc: 'Powerful online stores with seamless checkout, inventory, and payment integration.' },
+                    { icon: '🎯', title: 'SEO Optimized', desc: 'Clean code and semantic structure to help you rank higher on Google.' },
+                    { icon: 'cms', title: 'Easy CMS', desc: 'Manage your content effortlessly with WordPress, Shopify, or custom dashboards.' }
+                ]
+            },
+            'mobile-app': {
+                badge: 'Mobile Solutions',
+                heading: 'Mobile App\nDevelopment',
+                subtitle: 'Native and cross-platform mobile applications that deliver seamless experiences and keep your users engaged on the go.',
+                overviewTitle: 'Apps that people love',
+                text1: 'We design and develop mobile applications for iOS and Android that users actually want to use. From concept to launch, we handle everything — UI/UX design, development, testing, and deployment.',
+                text2: 'Whether you need a native app for peak performance or a cross-platform solution for faster time-to-market, our team delivers quality at every step.',
+                image: 'awt-mobile-app',
+                features: [
+                    { icon: '🍎', title: 'iOS Development', desc: 'Native Swift and Objective-C apps built for the Apple ecosystem.' },
+                    { icon: '🤖', title: 'Android Development', desc: 'Kotlin and Java apps optimized for the full range of Android devices.' },
+                    { icon: '🔄', title: 'Cross-Platform', desc: 'Flutter and React Native for one codebase, both platforms, zero compromise.' },
+                    { icon: '🔔', title: 'Push Notifications', desc: 'Engage users with targeted, personalized push notification strategies.' },
+                    { icon: '📊', title: 'Analytics Integration', desc: 'Track user behavior and app performance with built-in analytics.' },
+                    { icon: '🚀', title: 'App Store Launch', desc: 'Full support for App Store and Google Play submission and optimization.' }
+                ]
+            },
+            'ui-ux': {
+                badge: 'Design',
+                heading: 'UI/UX\nDesign',
+                subtitle: 'We create intuitive, beautiful interfaces that users love — backed by research, driven by empathy, and refined by data.',
+                overviewTitle: 'Design with purpose',
+                text1: 'Great design isn\'t just about looking good — it\'s about solving problems. Our UI/UX process starts with understanding your users, their needs, and their pain points.',
+                text2: 'From wireframes and prototypes to polished design systems, we craft every interaction to be intuitive, accessible, and delightful.',
+                image: 'awt-ui-ux',
+                features: [
+                    { icon: '🔍', title: 'User Research', desc: 'Deep analysis of your target audience to inform every design decision.' },
+                    { icon: '📐', title: 'Wireframing', desc: 'Structural blueprints that map out the perfect user journey.' },
+                    { icon: '🎨', title: 'Visual Design', desc: 'Stunning, on-brand interfaces that make a lasting impression.' },
+                    { icon: '📱', title: 'Prototyping', desc: 'Interactive prototypes to test and validate before development.' },
+                    { icon: '✅', title: 'Usability Testing', desc: 'Real user feedback to refine and optimize the experience.' },
+                    { icon: '📦', title: 'Design Systems', desc: 'Scalable component libraries for consistent, efficient design.' }
+                ]
+            },
+            'branding': {
+                badge: 'Identity',
+                heading: 'Corporate\nBranding',
+                subtitle: 'We build memorable brands that tell your story, connect with your audience, and stand out in a crowded market.',
+                overviewTitle: 'Your brand, amplified',
+                text1: 'A strong brand is more than a logo — it\'s the feeling people get when they interact with your business. We help you define, design, and deliver a brand identity that resonates.',
+                text2: 'From strategy and naming to visual identity and guidelines, we create cohesive brand experiences that build trust and loyalty.',
+                image: 'awt-branding',
+                features: [
+                    { icon: '🎯', title: 'Brand Strategy', desc: 'Define your positioning, messaging, and unique value proposition.' },
+                    { icon: '✏️', title: 'Logo Design', desc: 'Distinctive, versatile logos that become the face of your business.' },
+                    { icon: '🎨', title: 'Visual Identity', desc: 'Color palettes, typography, and design elements that tell your story.' },
+                    { icon: '📖', title: 'Brand Guidelines', desc: 'Comprehensive guides to keep your brand consistent everywhere.' },
+                    { icon: '💼', title: 'Stationery Design', desc: 'Business cards, letterheads, and collateral that make an impression.' },
+                    { icon: '📢', title: 'Brand Voice', desc: 'Tone and messaging frameworks for consistent communication.' }
+                ]
+            },
+            'aeo': {
+                badge: 'AI Search',
+                heading: 'AEO — Answer\nEngine Optimization',
+                subtitle: 'Get your brand cited by AI assistants, voice search, and featured snippets. Be the answer your audience is looking for.',
+                overviewTitle: 'Optimize for AI answers',
+                text1: 'Answer Engine Optimization (AEO) ensures your content is the source AI assistants like ChatGPT, Siri, and Alexa pull from when answering user questions.',
+                text2: 'We structure your content, implement schema markup, and optimize for conversational queries so you become the authoritative answer in your niche.',
+                image: 'awt-aeo',
+                features: [
+                    { icon: '🗣️', title: 'Voice Search Ready', desc: 'Optimized for how people speak, not just how they type.' },
+                    { icon: '📋', title: 'Structured Data', desc: 'Schema markup that helps search engines understand your content.' },
+                    { icon: '📌', title: 'Featured Snippets', desc: 'Content engineered to capture position zero on Google.' },
+                    { icon: '🤖', title: 'AI Citations', desc: 'Strategies to get your brand referenced by AI tools.' },
+                    { icon: '❓', title: 'FAQ Optimization', desc: 'Q&A formatted content that directly answers user queries.' },
+                    { icon: '📊', title: 'Performance Tracking', desc: 'Monitor your visibility across AI-powered search results.' }
+                ]
+            },
+            'geo': {
+                badge: 'AI Search',
+                heading: 'GEO — Generative\nEngine Optimization',
+                subtitle: 'Future-proof your visibility in the era of AI-generated search results and large language models.',
+                overviewTitle: 'Visible in the AI era',
+                text1: 'Generative Engine Optimization (GEO) focuses on making your content visible and authoritative in AI-powered search experiences like Google SGE, Bing Chat, and Perplexity.',
+                text2: 'We optimize your entity presence, authority signals, and content structure so LLMs trust and surface your brand.',
+                image: 'awt-geo',
+                features: [
+                    { icon: '🧠', title: 'LLM Visibility', desc: 'Strategies to get your content surfaced by large language models.' },
+                    { icon: '🏛️', title: 'Entity Building', desc: 'Establish your brand as a recognized entity in knowledge graphs.' },
+                    { icon: '🔗', title: 'Authority Signals', desc: 'Build the trust signals that AI engines use to rank sources.' },
+                    { icon: '📝', title: 'Content Structure', desc: 'Format content for AI parsing, summarization, and citation.' },
+                    { icon: '🔍', title: 'SGE Optimization', desc: 'Tailored strategies for Google\'s Search Generative Experience.' },
+                    { icon: '📈', title: 'AI Analytics', desc: 'Track your brand\'s presence across generative search platforms.' }
+                ]
+            },
+            'seo': {
+                badge: 'Search',
+                heading: 'SEO — Search Engine\nOptimization',
+                subtitle: 'Dominate search results with data-driven SEO strategies that drive organic traffic, leads, and revenue.',
+                overviewTitle: 'Rank higher, grow faster',
+                text1: 'Our SEO services go beyond keywords. We take a holistic approach — technical optimization, content strategy, and authority building — to get you ranking where it matters most.',
+                text2: 'Whether you\'re a local business or a global brand, we create custom SEO roadmaps that deliver measurable, sustainable growth.',
+                image: 'awt-seo',
+                features: [
+                    { icon: '🔍', title: 'On-Page SEO', desc: 'Optimize titles, meta tags, headings, and content for target keywords.' },
+                    { icon: '⚙️', title: 'Technical SEO', desc: 'Fix crawl errors, improve site speed, and optimize site architecture.' },
+                    { icon: '🔗', title: 'Link Building', desc: 'Earn high-quality backlinks from authoritative sources in your niche.' },
+                    { icon: '📍', title: 'Local SEO', desc: 'Dominate local search with Google Business Profile and local citations.' },
+                    { icon: '📊', title: 'SEO Audits', desc: 'Comprehensive analysis of your site\'s SEO health and opportunities.' },
+                    { icon: '📈', title: 'Reporting', desc: 'Transparent monthly reports with rankings, traffic, and conversion data.' }
+                ]
+            },
+            'digital-marketing': {
+                badge: 'Marketing',
+                heading: 'Digital\nMarketing',
+                subtitle: 'Data-driven digital marketing strategies that amplify your brand, capture leads, and accelerate revenue growth.',
+                overviewTitle: 'Growth on every channel',
+                text1: 'From paid ads and social media to email campaigns and conversion optimization, we build integrated marketing strategies that reach the right audience at the right time.',
+                text2: 'Every campaign is backed by data, optimized in real-time, and designed to deliver measurable ROI for your business.',
+                image: 'awt-digital-marketing',
+                features: [
+                    { icon: '📣', title: 'Paid Advertising', desc: 'Google Ads, Meta Ads, and LinkedIn campaigns that maximize ROAS.' },
+                    { icon: '📱', title: 'Social Media', desc: 'Strategic content and community management across all platforms.' },
+                    { icon: '📧', title: 'Email Marketing', desc: 'Automated email sequences that nurture leads and drive conversions.' },
+                    { icon: '📊', title: 'Analytics', desc: 'Full-funnel tracking and attribution to measure what matters.' },
+                    { icon: '🎯', title: 'Lead Generation', desc: 'Landing pages and funnels designed to capture high-quality leads.' },
+                    { icon: '🔄', title: 'CRO', desc: 'Conversion rate optimization to get more from your existing traffic.' }
+                ]
+            },
+            'printing': {
+                badge: 'Print',
+                heading: 'Printing\nSolutions',
+                subtitle: 'Premium print materials that leave a lasting impression — from business cards to large-format displays.',
+                overviewTitle: 'Tangible impact',
+                text1: 'In a digital world, exceptional print materials stand out. We design and produce high-quality printed collateral that reinforces your brand and makes a tangible connection.',
+                text2: 'From concept to delivery, we handle design, material selection, print management, and fulfillment — so you get premium results without the hassle.',
+                image: 'awt-printing',
+                features: [
+                    { icon: '💼', title: 'Business Cards', desc: 'Premium cards with finishes that make a memorable first impression.' },
+                    { icon: '📄', title: 'Brochures & Flyers', desc: 'Eye-catching marketing materials that communicate your message.' },
+                    { icon: '📦', title: 'Packaging', desc: 'Custom packaging designs that elevate your product experience.' },
+                    { icon: '🖼️', title: 'Large Format', desc: 'Banners, signage, and displays for events and retail spaces.' },
+                    { icon: '👔', title: 'Stationery', desc: 'Letterheads, envelopes, and branded office supplies.' },
+                    { icon: '👕', title: 'Merchandise', desc: 'Custom apparel, mugs, and promotional items for your brand.' }
+                ]
+            },
+            'content-creator': {
+                badge: 'Content',
+                heading: 'Content\nCreator',
+                subtitle: 'Engaging, scroll-stopping content that builds your brand, grows your audience, and drives meaningful engagement.',
+                overviewTitle: 'Stories that convert',
+                text1: 'Content is king — but only when it\'s strategic. Our content creation team produces videos, graphics, blogs, and social media content that resonates with your audience.',
+                text2: 'We handle everything from ideation and scripting to production and distribution, ensuring every piece of content serves your business goals.',
+                image: 'awt-content',
+                features: [
+                    { icon: '🎥', title: 'Video Content', desc: 'Short-form and long-form videos for Reels, YouTube, and TikTok.' },
+                    { icon: '✍️', title: 'Copywriting', desc: 'Persuasive, on-brand copy for websites, ads, and emails.' },
+                    { icon: '📝', title: 'Blog Writing', desc: 'SEO-optimized articles that establish thought leadership.' },
+                    { icon: '🎨', title: 'Social Graphics', desc: 'Branded visuals designed to stop the scroll and spark engagement.' },
+                    { icon: '📅', title: 'Content Calendar', desc: 'Strategic planning to maintain consistency and relevance.' },
+                    { icon: '📊', title: 'Performance Analysis', desc: 'Track engagement and refine content strategy with data.' }
+                ]
+            },
+            'professional-email': {
+                badge: 'Email',
+                heading: 'Professional\nEmail Service',
+                subtitle: 'Secure, reliable business email on your own domain — powered by Google Workspace or Microsoft 365.',
+                overviewTitle: 'Email that means business',
+                text1: 'A professional email address builds trust and credibility from the first message. We set up and manage business email on your custom domain with the world\'s leading platforms.',
+                text2: 'From initial setup and migration to ongoing management and security, we handle the tech so you can focus on communication.',
+                image: 'awt-email',
+                features: [
+                    { icon: '📧', title: 'Custom Domain', desc: 'Email addresses like you@yourcompany.com that build credibility.' },
+                    { icon: '🔒', title: 'Enterprise Security', desc: 'Advanced spam filters, 2FA, and data protection.' },
+                    { icon: '☁️', title: 'Cloud Storage', desc: 'Generous cloud storage for files, shared drives, and collaboration.' },
+                    { icon: '📅', title: 'Calendar & Meet', desc: 'Integrated scheduling, video conferencing, and productivity tools.' },
+                    { icon: '🔄', title: 'Migration Support', desc: 'Seamless migration from your old provider with zero downtime.' },
+                    { icon: '🛠️', title: 'Managed Support', desc: 'Ongoing admin, user management, and technical support.' }
+                ]
+            },
+            'hosting': {
+                badge: 'Infrastructure',
+                heading: 'Web\nHosting',
+                subtitle: 'Fast, secure, and reliable hosting solutions that keep your website running at peak performance 24/7.',
+                overviewTitle: 'Always online, always fast',
+                text1: 'Your website deserves a home that\'s fast, secure, and always available. We provide managed hosting solutions tailored to your traffic, performance, and security needs.',
+                text2: 'From shared hosting for small sites to dedicated servers for enterprise platforms, we handle server management so you don\'t have to.',
+                image: 'awt-hosting',
+                features: [
+                    { icon: '⚡', title: 'Blazing Fast', desc: 'SSD storage, CDN integration, and server-level caching.' },
+                    { icon: '🔒', title: 'Free SSL', desc: 'HTTPS encryption for every site, renewed automatically.' },
+                    { icon: '📈', title: '99.9% Uptime', desc: 'Redundant infrastructure ensures your site stays online.' },
+                    { icon: '🔄', title: 'Daily Backups', desc: 'Automatic backups with one-click restore capability.' },
+                    { icon: '🛡️', title: 'Security', desc: 'Firewall, malware scanning, and DDoS protection included.' },
+                    { icon: '🛠️', title: 'Managed Support', desc: 'Server management, updates, and 24/7 technical support.' }
+                ]
+            },
+            'video-2d-3d': {
+                badge: 'Video',
+                heading: '2D / 3D\nVideo Production',
+                subtitle: 'Stunning animated and 3D videos that bring your ideas to life, tell your story, and captivate your audience.',
+                overviewTitle: 'Bring ideas to life',
+                text1: 'From explainer videos and product visualizations to motion graphics and cinematic 3D animations, our video team creates content that demands attention.',
+                text2: 'We combine creative storytelling with cutting-edge animation techniques to produce videos that explain, engage, and convert.',
+                image: 'awt-video',
+                features: [
+                    { icon: '🎬', title: '2D Animation', desc: 'Engaging explainer videos and animated stories that simplify complex ideas.' },
+                    { icon: '🧊', title: '3D Visualization', desc: 'Photorealistic product renders and architectural visualizations.' },
+                    { icon: '✨', title: 'Motion Graphics', desc: 'Dynamic graphics that add energy and polish to any content.' },
+                    { icon: '📱', title: 'Social Reels', desc: 'Short-form videos optimized for Instagram, TikTok, and YouTube.' },
+                    { icon: '🎤', title: 'Product Demos', desc: 'Clear, compelling product walkthroughs and tutorials.' },
+                    { icon: '🔊', title: 'Sound Design', desc: 'Professional voiceover, music, and sound effects.' }
+                ]
+            }
+        };
+
+        // ── Load Service Data ──
+        function loadService() {
+            const params = new URLSearchParams(window.location.search);
+            const page = params.get('page') || 'web-design';
+            const data = services[page];
+
+            if (!data) {
+                document.getElementById('heroHeading').textContent = 'Service Not Found';
+                document.getElementById('heroSubtitle').textContent = 'Please check the URL and try again.';
+                return;
+            }
+
+            document.title = data.heading.replace('\n', ' ') + ' — Amazing WebTech';
+            document.querySelector('meta[name="description"]').setAttribute('content', data.subtitle);
+
+            document.getElementById('heroBadgeText').textContent = data.badge;
+            document.getElementById('heroHeading').innerHTML = data.heading.replace('\n', '<br>');
+            document.getElementById('heroSubtitle').textContent = data.subtitle;
+
+            document.getElementById('overviewTitle').textContent = data.overviewTitle;
+            document.getElementById('overviewText1').textContent = data.text1;
+            document.getElementById('overviewText2').textContent = data.text2;
+            document.getElementById('overviewImage').src = 'https://picsum.photos/seed/' + data.image + '/700/525.jpg';
+            document.getElementById('overviewImage').alt = data.heading.replace('\n', ' ');
+
+            const heroVideo = document.getElementById('heroVideo');
+            const heroVideoOverlay = document.getElementById('heroVideoOverlay');
+            const videoUrl = data.heroVideo || 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260217_030345_246c0224-10a4-422c-b324-070b7c0eceda.mp4';
+            
+            if (videoUrl) {
+                heroVideo.src = videoUrl;
+                heroVideo.style.display = 'block';
+                heroVideoOverlay.style.display = 'block';
+            } else {
+                heroVideo.style.display = 'none';
+                heroVideoOverlay.style.display = 'none';
+            }
+
+            const grid = document.getElementById('featuresGrid');
+            grid.innerHTML = '';
+
+            data.features.forEach(function (f, index) {
+                const card = document.createElement('div');
+                card.className = 'feature-card fade-in-up';
+                card.style.transitionDelay = (index * 0.1) + 's';
+                card.innerHTML =
+                    '<div class="feature-icon">' + f.icon + '</div>' +
+                    '<h3>' + f.title + '</h3>' +
+                    '<p>' + f.desc + '</p>';
+                grid.appendChild(card);
+            });
+
+            setTimeout(initAnimations, 100);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadService();
+            // Fallback initialization in case loadService is fast
+            setTimeout(initAnimations, 150);
+        });
+    
+        // ── 1. Custom Cursor ──
+        var cursorDot = document.getElementById('cursorDot');
+        var cursorOutline = document.getElementById('cursorOutline');
+        if (cursorDot && cursorOutline) {
+            var mouseX = 0, mouseY = 0;
+            var outlineX = 0, outlineY = 0;
+
+            document.addEventListener('mousemove', function(e) {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                cursorDot.style.left = mouseX + 'px';
+                cursorDot.style.top = mouseY + 'px';
+            });
+
+            function animateCursor() {
+                outlineX += (mouseX - outlineX) * 0.12;
+                outlineY += (mouseY - outlineY) * 0.12;
+                cursorOutline.style.left = outlineX + 'px';
+                cursorOutline.style.top = outlineY + 'px';
+                requestAnimationFrame(animateCursor);
+            }
+            animateCursor();
+
+            // Hover effect on interactive elements
+            var interactiveElements = document.querySelectorAll('a, button, .feature-card, .portfolio-item, .filter-btn, .dropdown-item, input, textarea');
+            interactiveElements.forEach(function(el) {
+                el.addEventListener('mouseenter', function() {
+                    cursorDot.classList.add('hovering');
+                    cursorOutline.classList.add('hovering');
+                });
+                el.addEventListener('mouseleave', function() {
+                    cursorDot.classList.remove('hovering');
+                    cursorOutline.classList.remove('hovering');
+                });
+            });
+
+            // ── Hide cursor on mobile ──
+            if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+                cursorDot.style.display = 'none';
+                cursorOutline.style.display = 'none';
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

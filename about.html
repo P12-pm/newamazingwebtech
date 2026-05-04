@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us — Amazing WebTech</title>
+    <meta name="description"
+        content="Get to know Amazing WebTech — a digital creative agency delivering outstanding results driven by data, design, and innovation." />
+
+    <link rel="preconnect" href="https://api.fontshare.com" />
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" />
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            background: #000;
+            font-family: 'General Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            color: #fff;
+        }
+
+        ::selection {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ── Hero Wrapper ── */
+        .hero {
+            position: relative;
+            width: 100%;
+            min-height: 60vh;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .hero__video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero__video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        /* ── Navbar ── */
+        .navbar {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 120px;
+            width: 100%;
+            transition: background 0.3s, backdrop-filter 0.3s, -webkit-backdrop-filter 0.3s;
+        }
+
+        .navbar__left {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .navbar__logo {
+            display: flex;
+            align-items: center;
+            width: 187px;
+            height: 25px;
+            flex-shrink: 0;
+            text-decoration: none;
+        }
+
+        .navbar__logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .navbar__links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .navbar__link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: opacity 0.2s ease;
+        }
+
+        .navbar__link:hover {
+            opacity: 0.75;
+        }
+
+        /* ── Pill Button ── */
+        .btn-pill {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            border: 0.6px solid rgba(255, 255, 255, 1);
+            background: transparent;
+            cursor: pointer;
+            text-decoration: none;
+            outline: none;
+            transition: opacity 0.2s ease, transform 0.15s ease;
+            overflow: hidden;
+        }
+
+        .btn-pill:hover {
+            opacity: 0.88;
+            transform: translateY(-1px);
+        }
+
+        .btn-pill:active {
+            transform: translateY(0);
+        }
+
+        .btn-pill::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 14px;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 70%);
+            filter: blur(4px);
+            border-radius: 50%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .btn-pill__inner {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 11px 29px;
+            white-space: nowrap;
+        }
+
+        .btn-pill--dark .btn-pill__inner {
+            background: #000;
+            color: #fff;
+        }
+
+        .btn-pill--light {
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .btn-pill--light .btn-pill__inner {
+            background: #fff;
+            color: #000;
+        }
+
+        /* ── Hero Content ── */
+        .hero__content {
+            position: relative;
+            z-index: 10;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 24px 80px;
+            gap: 20px;
+            font-family: 'Copperplate', 'Papyrus', fantasy;
+        }
+
+        .hero__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid rgba(255, 255, 255, 0.20);
+            border-radius: 20px;
+            padding: 7px 14px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #fff;
+            white-space: nowrap;
+        }
+
+        .hero__badge-dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #fff;
+            flex-shrink: 0;
+        }
+
+        .hero__heading {
+            font-size: 56px;
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            background: linear-gradient(144.5deg, #ffffff 28%, rgba(0, 0, 0, 0) 115%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .hero__subtitle {
+            max-width: 600px;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 1.65;
+            color: rgba(255, 255, 255, 0.70);
+        }
+
+        /* ── Mobile Menu ── */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 20;
+        }
+
+        .mobile-menu-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.97);
+            z-index: 100;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu.open {
+            display: flex;
+            opacity: 1;
+        }
+
+        .mobile-menu a {
+            font-size: 28px;
+            font-weight: 500;
+            color: #fff;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .mobile-menu a:hover {
+            opacity: 0.7;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu-close svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        /* ── Navbar Dropdown ── */
+        .navbar__dropdown-wrap {
+            position: relative;
+        }
+
+        .navbar__dropdown-arrow {
+            transition: transform 0.3s;
+        }
+
+        .navbar__dropdown-wrap:hover .navbar__dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .navbar__dropdown {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(8px);
+            min-width: 280px;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 16px 8px 8px;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+            z-index: 100;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.03);
+        }
+
+        .navbar__dropdown::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 0;
+            right: 0;
+            height: 8px;
+        }
+
+        .navbar__dropdown::after {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 12px;
+            height: 12px;
+            background: rgba(10, 10, 10, 0.95);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-left: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .navbar__dropdown-wrap:hover .navbar__dropdown,
+        .navbar__dropdown-wrap.open .navbar__dropdown {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s, padding-left 0.2s;
+            cursor: pointer;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+            color: #fff;
+            padding-left: 20px;
+        }
+
+        .dropdown-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+            transition: background 0.2s, border-color 0.2s, transform 0.2s;
+        }
+
+        .dropdown-item:hover .dropdown-icon {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.12);
+            transform: scale(1.08);
+        }
+
+        .dropdown-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .dropdown-text span:first-child {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .dropdown-text span:last-child {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.35);
+            line-height: 1.3;
+        }
+
+        .dropdown-item:hover .dropdown-text span:last-child {
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.06);
+            margin: 4px 8px;
+        }
+
+        .dropdown-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: rgba(255, 255, 255, 0.3);
+            padding: 12px 16px 6px;
+            font-weight: 600;
+        }
+
+        /* Mobile dropdown */
+        .mobile-dropdown-toggle {
+            display: none;
+        }
+
+        @media (max-width: 1024px) {
+            .navbar__dropdown {
+                min-width: 260px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .navbar__dropdown-wrap:hover .navbar__dropdown {
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+                transform: translateX(-50%) translateY(8px);
+            }
+
+            .navbar__dropdown-wrap.open .navbar__dropdown {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+                transform: translateX(-50%) translateY(0);
+            }
+
+            .mobile-dropdown-toggle {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                background: none;
+                border: none;
+                color: rgba(255, 255, 255, 0.7);
+                font-family: inherit;
+                font-size: 28px;
+                font-weight: 500;
+                cursor: pointer;
+                transition: color 0.2s;
+            }
+
+            .mobile-dropdown-toggle:hover { color: #fff; }
+
+            .mobile-dropdown-toggle svg {
+                width: 20px;
+                height: 20px;
+                transition: transform 0.3s;
+            }
+
+            .mobile-dropdown-toggle.open svg {
+                transform: rotate(180deg);
+            }
+        }
+
+        /* ── Responsive ── */
+        .section {
+            padding: 100px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-subtitle {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 40px;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .section-title span {
+            background: linear-gradient(144.5deg, #ffffff 28%, rgba(255, 255, 255, 0.3) 115%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        /* ── Story Section ── */
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .story-content p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .story-content p:first-child::first-letter {
+            font-size: 48px;
+            font-weight: 600;
+            float: left;
+            line-height: 1;
+            margin-right: 12px;
+            margin-top: 4px;
+            color: #fff;
+        }
+
+        .story-image {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            aspect-ratio: 4/5;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .story-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, transparent 40%);
+        }
+
+        /* ── Values ── */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .value-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 24px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: transform 0.3s, background 0.3s, border-color 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .value-icon {
+            font-size: 36px;
+            margin-bottom: 24px;
+            width: 72px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 20px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .value-card h3 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .value-card p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.6;
+        }
+
+        /* ── Team ── */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .team-card {
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-photo {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 24px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(40%);
+            transition: filter 0.4s;
+        }
+
+        .team-card:hover .team-photo img {
+            filter: grayscale(0%);
+        }
+
+        .team-name {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .team-role {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .team-socials {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .team-socials a {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.5);
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .team-socials a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        /* ── Timeline ── */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.15) 10%, rgba(255, 255, 255, 0.15) 90%, transparent);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 50px;
+            padding-left: 30px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -32px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+        }
+
+        .timeline-year {
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .timeline-item h3 {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .timeline-item p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.6;
+        }
+
+        /* ── Stats ── */
+        .stats-container {
+            background: rgba(255, 255, 255, 0.02);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 80px 24px;
+        }
+
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            text-align: center;
+            gap: 30px;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            background: linear-gradient(144.5deg, #ffffff 28%, rgba(255, 255, 255, 0.2) 115%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ── CTA Banner ── */
+        .cta-banner {
+            padding: 100px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-banner .section-title {
+            margin-bottom: 20px;
+        }
+
+        .cta-banner p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 550px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            background: #000;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 60px 24px 30px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 1024px) {
+            .navbar {
+                padding: 20px 60px;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .navbar {
+                padding: 20px 24px;
+            }
+
+            .navbar__links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero__heading {
+                font-size: 36px;
+            }
+
+            .hero__content {
+                padding: 80px 24px 60px;
+            }
+
+            .section {
+                padding: 70px 24px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .story-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stat-number {
+                font-size: 36px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    
+        /* ── Modern Floating Navbar ── */
+        .navbar-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 24px;
+            z-index: 1000;
+            transition: padding 0.4s ease;
+            pointer-events: none;
+        }
+
+        .navbar-wrapper.scrolled {
+            padding: 10px 24px;
+        }
+        
+        .navbar-new {
+            pointer-events: auto;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(15, 15, 15, 0.65);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 9999px;
+            padding: 12px 16px 12px 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .navbar-wrapper.scrolled .navbar-new {
+            background: rgba(10, 10, 10, 0.85);
+            border-color: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            height: 60px;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .nav-logo:hover {
+            transform: scale(1.02);
+        }
+
+        .nav-logo img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 9999px;
+            transition: color 0.3s, background 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-link.active {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #fff, #e0e0e0);
+            color: #000;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 10px 24px;
+            border-radius: 9999px;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.15);
+        }
+
+        @media (max-width: 1024px) {
+            .navbar-wrapper {
+                padding: 16px;
+            }
+            .navbar-wrapper.scrolled {
+                padding: 10px 16px;
+            }
+            .navbar-new {
+                padding: 10px 14px 10px 20px;
+            }
+            .nav-link {
+                padding: 8px 12px;
+            }
+            .nav-btn {
+                padding: 8px 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .nav-btn {
+                display: none;
+            }
+        }
+
+    
+        /* ── 1. Custom Cursor ── */
+        .cursor-dot {
+            position: fixed; top: 0; left: 0; z-index: 99999;
+            width: 6px; height: 6px; border-radius: 50%;
+            background: #fff; pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s, background 0.2s;
+        }
+
+        .cursor-outline {
+            position: fixed; top: 0; left: 0; z-index: 99998;
+            width: 36px; height: 36px; border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s ease, height 0.3s ease, border-color 0.3s, background 0.3s;
+        }
+
+        .cursor-dot.hovering {
+            width: 40px; height: 40px;
+            background: rgba(255, 255, 255, 0.08);
+            mix-blend-mode: difference;
+        }
+
+        .cursor-outline.hovering {
+            width: 60px; height: 60px;
+            border-color: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        @media (pointer: coarse) {
+            .cursor-dot, .cursor-outline { display: none !important; }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-outline" id="cursorOutline"></div>
+
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close Menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <a href="index.html" onclick="closeMobileMenu()">Home</a>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+            <button class="mobile-dropdown-toggle" id="mobileDropdownBtn" onclick="toggleMobileDropdown()">
+                Services
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div id="mobileDropdownList" style="display:none;flex-direction:column;align-items:center;gap:14px;padding:10px 0;">
+                <a href="service.html?page=web-design" onclick="closeMobileMenu()" style="font-size:20px;">💻 Website Design</a>
+                <a href="service.html?page=ui-ux" onclick="closeMobileMenu()" style="font-size:20px;">✨ UI/UX Design</a>
+                <a href="service.html?page=mobile-app" onclick="closeMobileMenu()" style="font-size:20px;">📱 Mobile App</a>
+                <a href="service.html?page=branding" onclick="closeMobileMenu()" style="font-size:20px;">🎯 Branding</a>
+                <a href="service.html?page=digital-marketing" onclick="closeMobileMenu()" style="font-size:20px;">📈 Digital Marketing</a>
+                <a href="service.html?page=seo" onclick="closeMobileMenu()" style="font-size:20px;">🔍 SEO</a>
+                <a href="service.html?page=aeo" onclick="closeMobileMenu()" style="font-size:20px;">🗣️ AEO</a>
+                <a href="service.html?page=geo" onclick="closeMobileMenu()" style="font-size:20px;">🤖 GEO</a>
+                <a href="service.html?page=video-2d-3d" onclick="closeMobileMenu()" style="font-size:20px;">🎬 2D/3D Video</a>
+                <a href="service.html?page=content-creator" onclick="closeMobileMenu()" style="font-size:20px;">✍️ Content Creator</a>
+                <a href="service.html?page=printing" onclick="closeMobileMenu()" style="font-size:20px;">🖨️ Printing</a>
+                <a href="service.html?page=professional-email" onclick="closeMobileMenu()" style="font-size:20px;">📧 Professional Email</a>
+                <a href="service.html?page=hosting" onclick="closeMobileMenu()" style="font-size:20px;">☁️ Hosting</a>
+            </div>
+        </div>
+        <a href="about.html" onclick="closeMobileMenu()">About Us</a>
+        <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero" aria-label="Page Hero">
+        <video class="hero__video" autoplay loop muted playsinline src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260217_030345_246c0224-10a4-422c-b324-070b7c0eceda.mp4"></video>
+        <div class="hero__video-overlay"></div>
+
+        
+        <!-- New Floating Premium Navbar -->
+        <div class="navbar-wrapper" id="navbarWrapper">
+            <nav class="navbar-new" role="navigation" aria-label="Primary Navigation">
+                <a href="index.html" class="nav-logo" aria-label="Amazing WebTech Home">
+                    <img src="logo2.png" alt="Amazing WebTech">
+                </a>
+                
+                <ul class="nav-links" role="list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="navbar__dropdown-wrap">
+                        <a href="service.html" class="nav-link">
+                            Services
+                            <svg class="navbar__dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </a>
+                        <div class="navbar__dropdown">
+                            <div class="dropdown-label">Design & Development</div>
+                            <a href="service.html?page=web-design" class="dropdown-item">
+                                <div class="dropdown-icon">💻</div>
+                                <div class="dropdown-text">
+                                    <span>Website Design & Dev</span>
+                                    <span>Responsive, fast, scalable</span>
+                                </div>
+                            </a>
+                            <a href="service.html?page=ui-ux" class="dropdown-item">
+                                <div class="dropdown-icon">✨</div>
+                                <div class="dropdown-text">
+                                    <span>UI/UX Design</span>
+                                    <span>Intuitive & beautiful</span>
+                                </div>
+                            </a>
+                            <a href="service.html?page=mobile-app" class="dropdown-item">
+                                <div class="dropdown-icon">📱</div>
+                                <div class="dropdown-text">
+                                    <span>Mobile App</span>
+                                    <span>iOS, Android, cross-platform</span>
+                                </div>
+                            </a>
+                            <a href="service.html?page=branding" class="dropdown-item">
+                                <div class="dropdown-icon">🎯</div>
+                                <div class="dropdown-text">
+                                    <span>Corporate Branding</span>
+                                    <span>Identity & guidelines</span>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-label">Marketing & SEO</div>
+                            <a href="service.html?page=digital-marketing" class="dropdown-item">
+                                <div class="dropdown-icon">📈</div>
+                                <div class="dropdown-text">
+                                    <span>Digital Marketing</span>
+                                    <span>Ads, social, email, CRO</span>
+                                </div>
+                            </a>
+                            <a href="service.html?page=seo" class="dropdown-item">
+                                <div class="dropdown-icon">🔍</div>
+                                <div class="dropdown-text">
+                                    <span>SEO</span>
+                                    <span>Rank higher, grow faster</span>
+                                </div>
+                            </a>
+                            <a href="service.html?page=aeo" class="dropdown-item">
+                                <div class="dropdown-icon">🗣️</div>
+                                <div class="dropdown-text">
+                                    <span>AEO</span>
+                                    <span>Answer Engine Optimization</span>
+                                </div>
+                            </a>
+                            <a href="service.html?page=geo" class="dropdown-item">
+                                <div class="dropdown-icon">🤖</div>
+                                <div class="dropdown-text">
+                                    <span>GEO</span>
+                                    <span>Generative Engine Optimization</span>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-label">Content & Media</div>
+                            <a href="service.html?page=video-2d-3d" class="dropdown-item">
+                                <div class="dropdown-icon">🎬</div>
+                                <div class="dropdown-text">
+                                    <span>2D / 3D Video</span>
+                                    <span>Animation & production</span>
+                                </div>
+                            </a>
+                            <a href="service.html?page=content-creator" class="dropdown-item">
+                                <div class="dropdown-icon">✍️</div>
+                                <div class="dropdown-text">
+                                    <span>Content Creator</span>
+                                    <span>Videos, blogs, graphics</span>
+                                </div>
+                            </a>
+                            <a href="service.html?page=printing" class="dropdown-item">
+                                <div class="dropdown-icon">🖨️</div>
+                                <div class="dropdown-text">
+                                    <span>Printing Solutions</span>
+                                    <span>Cards, brochures, packaging</span>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-label">Infrastructure</div>
+                            <a href="service.html?page=professional-email" class="dropdown-item">
+                                <div class="dropdown-icon">📧</div>
+                                <div class="dropdown-text">
+                                    <span>Professional Email</span>
+                                    <span>Google Workspace, Microsoft</span>
+                                </div>
+                            </a>
+                            <a href="service.html?page=hosting" class="dropdown-item">
+                                <div class="dropdown-icon">☁️</div>
+                                <div class="dropdown-text">
+                                    <span>Web Hosting</span>
+                                    <span>Fast, secure, managed</span>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li><a href="about.html" class="nav-link active">About Us</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <a href="contact.html" class="nav-btn" aria-label="Get Started">Get Started</a>
+                    <button class="mobile-menu-btn" onclick="openMobileMenu()" aria-label="Open Menu">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+        </div>
+
+
+        <div class="hero__content">
+            <div class="hero__badge">
+                <span class="hero__badge-dot"></span>
+                <span>Est. 2010</span>
+            </div>
+            <h1 class="hero__heading">About Us</h1>
+            <p class="hero__subtitle">We're a team of designers, developers, and digital strategists passionate about
+                crafting exceptional online experiences that drive real business growth.</p>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="section">
+        <div class="story-grid">
+            <div class="story-content">
+                <span class="section-subtitle">Our Story</span>
+                <h2 class="section-title" style="margin-bottom:30px;"><span>From a small idea to a digital
+                        powerhouse</span></h2>
+                <p>Amazing WebTech was founded in 2010 in Ahmedabad, Gujarat, with a simple belief: every business
+                    deserves a powerful online presence. What started as a two-person operation in a small office has
+                    grown into a full-service digital agency with over 50 talented professionals.</p>
+                <p>Over the past 15 years, we've helped nearly 2,000 businesses — from ambitious startups to established
+                    enterprises — transform their digital footprint. Our approach has always been rooted in
+                    understanding our clients' unique challenges and delivering solutions that don't just look great,
+                    but perform exceptionally.</p>
+                <p>We don't just build websites — we build digital experiences that tell stories, generate leads, and
+                    create lasting connections between brands and their audiences. Every pixel, every line of code,
+                    every strategy is crafted with purpose.</p>
+            </div>
+            <div class="story-image">
+                <img src="https://picsum.photos/seed/awt-about-story/600/750.jpg" alt="Amazing WebTech Team"
+                    loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-subtitle">Our Values</span>
+            <h2 class="section-title"><span>What drives everything we do</span></h2>
+        </div>
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">🎯</div>
+                <h3>Purpose-Driven</h3>
+                <p>Every design decision and line of code serves a clear business objective. We don't create for the
+                    sake of creating — we create to deliver results.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">💡</div>
+                <h3>Innovation First</h3>
+                <p>We stay at the forefront of technology and design trends, constantly exploring new tools, frameworks,
+                    and methodologies to give our clients an edge.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🤝</div>
+                <h3>True Partnership</h3>
+                <p>We don't just work for our clients — we work with them. Transparent communication, shared goals, and
+                    mutual respect define every relationship.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">📊</div>
+                <h3>Data-Informed</h3>
+                <p>Beautiful design meets measurable impact. We use data and analytics to guide decisions, validate
+                    ideas, and continuously optimize performance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats-container">
+        <div class="stats-grid">
+            <div>
+                <div class="stat-number" data-target="15">0</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div>
+                <div class="stat-number" data-target="1980">0</div>
+                <div class="stat-label">Happy Clients</div>
+            </div>
+            <div>
+                <div class="stat-number" data-target="50">0</div>
+                <div class="stat-label">Team Members</div>
+            </div>
+            <div>
+                <div class="stat-number" data-target="3200">0</div>
+                <div class="stat-label">Projects Delivered</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Team Section -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-subtitle">Our Team</span>
+            <h2 class="section-title"><span>Meet the people behind the magic</span></h2>
+        </div>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-photo">
+                    <img src="https://picsum.photos/seed/awt-team1/400/400.jpg" alt="Arjun Mehta" loading="lazy">
+                </div>
+                <div class="team-name">Arjun Mehta</div>
+                <div class="team-role">Founder & CEO</div>
+                <div class="team-socials">
+                    <a href="#" aria-label="LinkedIn"><svg width="12" height="12" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg></a>
+                    <a href="#" aria-label="Twitter"><svg width="12" height="12" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg></a>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="team-photo">
+                    <img src="https://picsum.photos/seed/awt-team2/400/400.jpg" alt="Priya Sharma" loading="lazy">
+                </div>
+                <div class="team-name">Priya Sharma</div>
+                <div class="team-role">Creative Director</div>
+                <div class="team-socials">
+                    <a href="#" aria-label="LinkedIn"><svg width="12" height="12" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg></a>
+                    <a href="#" aria-label="Twitter"><svg width="12" height="12" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg></a>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="team-photo">
+                    <img src="https://picsum.photos/seed/awt-team3/400/400.jpg" alt="Rohan Patel" loading="lazy">
+                </div>
+                <div class="team-name">Rohan Patel</div>
+                <div class="team-role">Head of Development</div>
+                <div class="team-socials">
+                    <a href="#" aria-label="LinkedIn"><svg width="12" height="12" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg></a>
+                    <a href="#" aria-label="Twitter"><svg width="12" height="12" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg></a>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="team-photo">
+                    <img src="https://picsum.photos/seed/awt-team4/400/400.jpg" alt="Neha Gupta" loading="lazy">
+                </div>
+                <div class="team-name">Neha Gupta</div>
+                <div class="team-role">Marketing Strategist</div>
+                <div class="team-socials">
+                    <a href="#" aria-label="LinkedIn"><svg width="12" height="12" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg></a>
+                    <a href="#" aria-label="Twitter"><svg width="12" height="12" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-subtitle">Our Journey</span>
+            <h2 class="section-title"><span>Milestones along the way</span></h2>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">2010</div>
+                <h3>The Beginning</h3>
+                <p>Amazing WebTech was founded in Ahmedabad with a mission to make world-class web design accessible to
+                    businesses of all sizes.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2013</div>
+                <h3>Going Full-Service</h3>
+                <p>Expanded from web design into digital marketing, branding, and mobile app development — becoming a
+                    true full-service agency.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2016</div>
+                <h3>500 Clients Milestone</h3>
+                <p>Celebrated our 500th client and opened a new state-of-the-art design studio in the heart of
+                    Ahmedabad.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2019</div>
+                <h3>Global Reach</h3>
+                <p>Expanded operations to serve clients across 15+ countries, delivering projects in multiple languages
+                    and markets.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2022</div>
+                <h3>Innovation Lab</h3>
+                <p>Launched our Innovation Lab, exploring AR/VR, AI-driven design, and next-generation web technologies.
+                </p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2025</div>
+                <h3>1,980 Clients & Growing</h3>
+                <p>Now a team of 50+ professionals, we continue to push boundaries and deliver exceptional digital
+                    experiences worldwide.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="cta-banner">
+        <h2 class="section-title"><span>Want to work with us?</span></h2>
+        <p>We'd love to hear about your project. Let's create something amazing together.</p>
+        <a href="contact.html" class="btn-pill btn-pill--light">
+            <span class="btn-pill__inner">Get In Touch</span>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <img src="logo-dark.png" alt="Amazing WebTech" style="height: 48px; margin-right: auto; margin-bottom: 15px;">
+            <p class="footer-text">&copy; 2026 Amazing Webtech. All Rights Reserved.</p>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        function openMobileMenu() {
+            document.getElementById('mobileMenu').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMobileMenu() {
+            document.getElementById('mobileMenu').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // ── Desktop Navbar Dropdown ──
+        (function() {
+            var wraps = document.querySelectorAll('.navbar__dropdown-wrap');
+            wraps.forEach(function(wrap) {
+                var dropdown = wrap.querySelector('.navbar__dropdown');
+                var closeTimer;
+
+                function isOverZone(x, y) {
+                    var wRect = wrap.getBoundingClientRect();
+                    var inWrap = x >= wRect.left && x <= wRect.right && y >= wRect.top && y <= wRect.bottom;
+                    if (inWrap) return true;
+                    if (dropdown) {
+                        var dRect = dropdown.getBoundingClientRect();
+                        return x >= dRect.left && x <= dRect.right && y >= dRect.top && y <= dRect.bottom;
+                    }
+                    return false;
+                }
+
+                wrap.addEventListener('mouseenter', function() {
+                    clearTimeout(closeTimer);
+                    wrap.classList.add('open');
+                });
+
+                document.addEventListener('mousemove', function(e) {
+                    if (!wrap.classList.contains('open')) return;
+                    if (!isOverZone(e.clientX, e.clientY)) {
+                        clearTimeout(closeTimer);
+                        closeTimer = setTimeout(function() {
+                            wrap.classList.remove('open');
+                        }, 100);
+                    } else {
+                        clearTimeout(closeTimer);
+                    }
+                });
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.navbar__dropdown-wrap')) {
+                    wraps.forEach(function(w) { w.classList.remove('open'); });
+                }
+            });
+        })();
+
+        // ── Mobile Dropdown Toggle ──
+        function toggleMobileDropdown() {
+            var btn = document.getElementById('mobileDropdownBtn');
+            var list = document.getElementById('mobileDropdownList');
+            btn.classList.toggle('open');
+            if (list.style.display === 'none' || !list.style.display) {
+                list.style.display = 'flex';
+            } else {
+                list.style.display = 'none';
+            }
+        }
+
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80) {
+                navbar.style.background = 'rgba(0, 0, 0, 0.8)';
+                navbar.style.backdropFilter = 'blur(20px)';
+                navbar.style.webkitBackdropFilter = 'blur(20px)';
+            } else {
+                navbar.style.background = 'transparent';
+                navbar.style.backdropFilter = 'none';
+                navbar.style.webkitBackdropFilter = 'none';
+            }
+        });
+
+        function animateCounters() {
+            document.querySelectorAll('.stat-number[data-target]').forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 2000;
+                const start = performance.now();
+                function update(now) {
+                    const progress = Math.min((now - start) / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    counter.textContent = Math.round(target * eased);
+                    if (progress < 1) requestAnimationFrame(update);
+                }
+                requestAnimationFrame(update);
+            });
+        }
+
+        const statsObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { animateCounters(); statsObserver.unobserve(entry.target); }
+            });
+        }, { threshold: 0.3 });
+
+        const sc = document.querySelector('.stats-container');
+        if (sc) statsObserver.observe(sc);
+    
+        // ── 1. Custom Cursor ──
+        var cursorDot = document.getElementById('cursorDot');
+        var cursorOutline = document.getElementById('cursorOutline');
+        if (cursorDot && cursorOutline) {
+            var mouseX = 0, mouseY = 0;
+            var outlineX = 0, outlineY = 0;
+
+            document.addEventListener('mousemove', function(e) {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                cursorDot.style.left = mouseX + 'px';
+                cursorDot.style.top = mouseY + 'px';
+            });
+
+            function animateCursor() {
+                outlineX += (mouseX - outlineX) * 0.12;
+                outlineY += (mouseY - outlineY) * 0.12;
+                cursorOutline.style.left = outlineX + 'px';
+                cursorOutline.style.top = outlineY + 'px';
+                requestAnimationFrame(animateCursor);
+            }
+            animateCursor();
+
+            // Hover effect on interactive elements
+            var interactiveElements = document.querySelectorAll('a, button, .feature-card, .portfolio-item, .filter-btn, .dropdown-item, input, textarea');
+            interactiveElements.forEach(function(el) {
+                el.addEventListener('mouseenter', function() {
+                    cursorDot.classList.add('hovering');
+                    cursorOutline.classList.add('hovering');
+                });
+                el.addEventListener('mouseleave', function() {
+                    cursorDot.classList.remove('hovering');
+                    cursorOutline.classList.remove('hovering');
+                });
+            });
+
+            // ── Hide cursor on mobile ──
+            if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+                cursorDot.style.display = 'none';
+                cursorOutline.style.display = 'none';
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

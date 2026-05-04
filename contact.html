@@ -1,0 +1,2326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us — Amazing WebTech</title>
+    <meta name="description"
+        content="Get in touch with Amazing WebTech. Let's discuss how we can help grow your business online." />
+
+    <link rel="preconnect" href="https://api.fontshare.com" />
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" />
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            background: #000;
+            font-family: 'General Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            color: #fff;
+        }
+
+        ::selection {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ── Hero Wrapper ── */
+        .hero {
+            position: relative;
+            width: 100%;
+            min-height: 60vh;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .hero__video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero__video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        /* ── Navbar ── */
+        .navbar {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 120px;
+            width: 100%;
+            transition: background 0.3s, backdrop-filter 0.3s, -webkit-backdrop-filter 0.3s;
+        }
+
+        .navbar__left {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .navbar__logo {
+            display: flex;
+            align-items: center;
+            width: 187px;
+            height: 25px;
+            flex-shrink: 0;
+            text-decoration: none;
+        }
+
+        .navbar__logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .navbar__links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .navbar__link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: opacity 0.2s ease;
+        }
+
+        .navbar__link:hover {
+            opacity: 0.75;
+        }
+
+        /* ── Pill Button ── */
+        .btn-pill {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            border: 0.6px solid rgba(255, 255, 255, 1);
+            background: transparent;
+            cursor: pointer;
+            text-decoration: none;
+            outline: none;
+            transition: opacity 0.2s ease, transform 0.15s ease;
+            overflow: hidden;
+        }
+
+        .btn-pill:hover {
+            opacity: 0.88;
+            transform: translateY(-1px);
+        }
+
+        .btn-pill:active {
+            transform: translateY(0);
+        }
+
+        .btn-pill::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 14px;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 70%);
+            filter: blur(4px);
+            border-radius: 50%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .btn-pill__inner {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 11px 29px;
+            white-space: nowrap;
+        }
+
+        .btn-pill--dark .btn-pill__inner {
+            background: #000;
+            color: #fff;
+        }
+
+        .btn-pill--light {
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .btn-pill--light .btn-pill__inner {
+            background: #fff;
+            color: #000;
+        }
+
+        /* ── Hero Content ── */
+        .hero__content {
+            position: relative;
+            z-index: 10;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 24px 80px;
+            gap: 20px;
+            font-family: 'Copperplate', 'Papyrus', fantasy;
+        }
+
+        .hero__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid rgba(255, 255, 255, 0.20);
+            border-radius: 20px;
+            padding: 7px 14px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #fff;
+            white-space: nowrap;
+        }
+
+        .hero__badge-dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #fff;
+            flex-shrink: 0;
+        }
+
+        .hero__heading {
+            font-size: 56px;
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            background: linear-gradient(144.5deg, #ffffff 28%, rgba(0, 0, 0, 0) 115%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .hero__subtitle {
+            max-width: 600px;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 1.65;
+            color: rgba(255, 255, 255, 0.70);
+        }
+
+        /* ── Mobile Menu ── */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 20;
+        }
+
+        .mobile-menu-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.97);
+            z-index: 100;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu.open {
+            display: flex;
+            opacity: 1;
+        }
+
+        .mobile-menu a {
+            font-size: 28px;
+            font-weight: 500;
+            color: #fff;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .mobile-menu a:hover {
+            opacity: 0.7;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu-close svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        /* ── Navbar Dropdown ── */
+        .navbar__dropdown-wrap {
+            position: relative;
+        }
+
+        .navbar__dropdown-arrow {
+            transition: transform 0.3s;
+        }
+
+        .navbar__dropdown-wrap:hover .navbar__dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .navbar__dropdown {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(8px);
+            min-width: 280px;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 16px 8px 8px;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+            z-index: 100;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.03);
+        }
+
+        .navbar__dropdown::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 0;
+            right: 0;
+            height: 8px;
+        }
+
+        .navbar__dropdown::after {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 12px;
+            height: 12px;
+            background: rgba(10, 10, 10, 0.95);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-left: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .navbar__dropdown-wrap:hover .navbar__dropdown,
+        .navbar__dropdown-wrap.open .navbar__dropdown {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s, padding-left 0.2s;
+            cursor: pointer;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+            color: #fff;
+            padding-left: 20px;
+        }
+
+        .dropdown-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+            transition: background 0.2s, border-color 0.2s, transform 0.2s;
+        }
+
+        .dropdown-item:hover .dropdown-icon {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.12);
+            transform: scale(1.08);
+        }
+
+        .dropdown-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .dropdown-text span:first-child {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .dropdown-text span:last-child {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.35);
+            line-height: 1.3;
+        }
+
+        .dropdown-item:hover .dropdown-text span:last-child {
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.06);
+            margin: 4px 8px;
+        }
+
+        .dropdown-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: rgba(255, 255, 255, 0.3);
+            padding: 12px 16px 6px;
+            font-weight: 600;
+        }
+
+        /* Mobile dropdown */
+        .mobile-dropdown-toggle {
+            display: none;
+        }
+
+        @media (max-width: 1024px) {
+            .navbar__dropdown {
+                min-width: 260px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .navbar__dropdown-wrap:hover .navbar__dropdown {
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+                transform: translateX(-50%) translateY(8px);
+            }
+
+            .navbar__dropdown-wrap.open .navbar__dropdown {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+                transform: translateX(-50%) translateY(0);
+            }
+
+            .mobile-dropdown-toggle {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                background: none;
+                border: none;
+                color: rgba(255, 255, 255, 0.7);
+                font-family: inherit;
+                font-size: 28px;
+                font-weight: 500;
+                cursor: pointer;
+                transition: color 0.2s;
+            }
+
+            .mobile-dropdown-toggle:hover { color: #fff; }
+
+            .mobile-dropdown-toggle svg {
+                width: 20px;
+                height: 20px;
+                transition: transform 0.3s;
+            }
+
+            .mobile-dropdown-toggle.open svg {
+                transform: rotate(180deg);
+            }
+        }
+
+        /* ── Sections Common ── */
+        .section {
+            padding: 100px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-subtitle {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 40px;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .section-title span {
+            background: linear-gradient(144.5deg, #ffffff 28%, rgba(255, 255, 255, 0.3) 115%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        /* ── Contact Cards ── */
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 24px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: transform 0.3s, background 0.3s, border-color 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .contact-card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+        }
+
+        .contact-card h3 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .contact-card p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.6;
+        }
+
+        .contact-card a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: color 0.2s;
+        }
+
+        .contact-card a:hover {
+            color: #fff;
+        }
+
+        /* ── Contact Grid ── */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 80px;
+            align-items: flex-start;
+        }
+
+        /* ── Form ── */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-field {
+            flex: 1;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-label .required {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 11px;
+        }
+
+        .form-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 14px 18px;
+            border-radius: 12px;
+            color: #fff;
+            font-family: inherit;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .form-input:focus {
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.05);
+        }
+
+        .form-input.error {
+            border-color: rgba(255, 100, 100, 0.6);
+            background: rgba(255, 100, 100, 0.04);
+        }
+
+        .form-input.error:focus {
+            box-shadow: 0 0 0 3px rgba(255, 100, 100, 0.08);
+        }
+
+        .form-input.success {
+            border-color: rgba(100, 255, 150, 0.4);
+        }
+
+        textarea.form-input {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        .form-error {
+            font-size: 12px;
+            color: rgba(255, 130, 130, 0.9);
+            margin-top: 6px;
+            display: none;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .form-error.visible {
+            display: flex;
+        }
+
+        .form-error svg {
+            flex-shrink: 0;
+            width: 14px;
+            height: 14px;
+        }
+
+        .char-counter {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+            text-align: right;
+            margin-top: 6px;
+        }
+
+        .char-counter.warn {
+            color: rgba(255, 200, 100, 0.8);
+        }
+
+        .char-counter.limit {
+            color: rgba(255, 130, 130, 0.9);
+        }
+
+        /* Service chips */
+        .service-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .service-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 9999px;
+            padding: 8px 18px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .service-chip:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .service-chip.selected {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #fff;
+        }
+
+        .service-chip input {
+            display: none;
+        }
+
+        /* Budget slider */
+        .budget-slider-wrap {
+            margin-bottom: 24px;
+        }
+
+        .budget-display {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 10px;
+        }
+
+        .budget-value {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .budget-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            outline: none;
+        }
+
+        .budget-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #fff;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .budget-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #fff;
+            cursor: pointer;
+            border: none;
+        }
+
+        /* Submit button */
+        .submit-btn {
+            position: relative;
+            width: 100%;
+            border: none;
+            border-radius: 14px;
+            background: #fff;
+            color: #000;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 18px;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.15s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .submit-btn .spinner {
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(0, 0, 0, 0.2);
+            border-top-color: #000;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+            display: none;
+        }
+
+        .submit-btn.loading .spinner {
+            display: block;
+        }
+
+        .submit-btn.loading .btn-text {
+            display: none;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Form success */
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 60px 30px;
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
+        .form-success-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(100, 255, 150, 0.1);
+            border: 1px solid rgba(100, 255, 150, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 36px;
+        }
+
+        .form-success h3 {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .form-success p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+            max-width: 400px;
+            margin: 0 auto 30px;
+        }
+
+        .form-success .ref-number {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 30px;
+        }
+
+        /* ── Info Sidebar ── */
+        .contact-sidebar h3 {
+            font-size: 22px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .contact-sidebar>p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.7;
+            margin-bottom: 36px;
+        }
+
+        .info-block {
+            margin-bottom: 32px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .info-block:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .info-block h4 {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 14px;
+        }
+
+        .info-block ul {
+            list-style: none;
+        }
+
+        .info-block li {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-block li svg {
+            flex-shrink: 0;
+            width: 16px;
+            height: 16px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .info-block a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.2s;
+        }
+
+        .info-block a:hover {
+            color: #fff;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .social-link {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.5);
+            transition: background 0.2s, color 0.2s, border-color 0.2s;
+        }
+
+        .social-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* ── Map Section ── */
+        .map-section {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .map-wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .map-info h2 {
+            font-size: 32px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            background: linear-gradient(144.5deg, #ffffff 28%, rgba(255, 255, 255, 0.3) 115%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .map-info p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .map-info .office-hours {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .hours-item {
+            font-size: 14px;
+        }
+
+        .hours-item .day {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hours-item .time {
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+        }
+
+        .map-embed {
+            border-radius: 24px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .map-embed iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(1) invert(0.92) contrast(0.95);
+        }
+
+        /* ── FAQ ── */
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            color: #fff;
+            font-family: inherit;
+            font-size: 17px;
+            font-weight: 500;
+            padding: 24px 0;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            transition: color 0.2s;
+        }
+
+        .faq-question:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .faq-question svg {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .faq-item.open .faq-question svg {
+            transform: rotate(45deg);
+            color: #fff;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.7;
+            padding-bottom: 24px;
+        }
+
+        /* ── Toast ── */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 16px 24px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 9999;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .toast-success {
+            border-color: rgba(100, 255, 150, 0.2);
+        }
+
+        .toast-error {
+            border-color: rgba(255, 100, 100, 0.2);
+        }
+
+        /* ── Footer ── */
+        .footer {
+            background: #000;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 60px 24px 30px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 1024px) {
+            .navbar {
+                padding: 20px 60px;
+            }
+
+            .contact-cards {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .map-wrap {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .navbar {
+                padding: 20px 24px;
+            }
+
+            .navbar__links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero__heading {
+                font-size: 36px;
+            }
+
+            .hero__content {
+                padding: 80px 24px 60px;
+            }
+
+            .section {
+                padding: 70px 24px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .contact-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .map-wrap {
+                padding: 60px 24px;
+            }
+
+            .map-info .office-hours {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    
+        /* ── Modern Floating Navbar ── */
+        .navbar-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 24px;
+            z-index: 1000;
+            transition: padding 0.4s ease;
+            pointer-events: none;
+        }
+
+        .navbar-wrapper.scrolled {
+            padding: 10px 24px;
+        }
+        
+        .navbar-new {
+            pointer-events: auto;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(15, 15, 15, 0.65);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 9999px;
+            padding: 12px 16px 12px 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .navbar-wrapper.scrolled .navbar-new {
+            background: rgba(10, 10, 10, 0.85);
+            border-color: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            height: 60px;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .nav-logo:hover {
+            transform: scale(1.02);
+        }
+
+        .nav-logo img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 9999px;
+            transition: color 0.3s, background 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-link.active {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #fff, #e0e0e0);
+            color: #000;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 10px 24px;
+            border-radius: 9999px;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.15);
+        }
+
+        @media (max-width: 1024px) {
+            .navbar-wrapper {
+                padding: 16px;
+            }
+            .navbar-wrapper.scrolled {
+                padding: 10px 16px;
+            }
+            .navbar-new {
+                padding: 10px 14px 10px 20px;
+            }
+            .nav-link {
+                padding: 8px 12px;
+            }
+            .nav-btn {
+                padding: 8px 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .nav-btn {
+                display: none;
+            }
+        }
+
+    
+        /* ── 1. Custom Cursor ── */
+        .cursor-dot {
+            position: fixed; top: 0; left: 0; z-index: 99999;
+            width: 6px; height: 6px; border-radius: 50%;
+            background: #fff; pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s, background 0.2s;
+        }
+
+        .cursor-outline {
+            position: fixed; top: 0; left: 0; z-index: 99998;
+            width: 36px; height: 36px; border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s ease, height 0.3s ease, border-color 0.3s, background 0.3s;
+        }
+
+        .cursor-dot.hovering {
+            width: 40px; height: 40px;
+            background: rgba(255, 255, 255, 0.08);
+            mix-blend-mode: difference;
+        }
+
+        .cursor-outline.hovering {
+            width: 60px; height: 60px;
+            border-color: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        @media (pointer: coarse) {
+            .cursor-dot, .cursor-outline { display: none !important; }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-outline" id="cursorOutline"></div>
+
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close Menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <a href="index.html" onclick="closeMobileMenu()">Home</a>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+            <button class="mobile-dropdown-toggle" id="mobileDropdownBtn" onclick="toggleMobileDropdown()">
+                Services
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div id="mobileDropdownList" style="display:none;flex-direction:column;align-items:center;gap:14px;padding:10px 0;">
+                <a href="service.html?page=web-design" onclick="closeMobileMenu()" style="font-size:20px;">💻 Website Design</a>
+                <a href="service.html?page=ui-ux" onclick="closeMobileMenu()" style="font-size:20px;">✨ UI/UX Design</a>
+                <a href="service.html?page=mobile-app" onclick="closeMobileMenu()" style="font-size:20px;">📱 Mobile App</a>
+                <a href="service.html?page=branding" onclick="closeMobileMenu()" style="font-size:20px;">🎯 Branding</a>
+                <a href="service.html?page=digital-marketing" onclick="closeMobileMenu()" style="font-size:20px;">📈 Digital Marketing</a>
+                <a href="service.html?page=seo" onclick="closeMobileMenu()" style="font-size:20px;">🔍 SEO</a>
+                <a href="service.html?page=aeo" onclick="closeMobileMenu()" style="font-size:20px;">🗣️ AEO</a>
+                <a href="service.html?page=geo" onclick="closeMobileMenu()" style="font-size:20px;">🤖 GEO</a>
+                <a href="service.html?page=video-2d-3d" onclick="closeMobileMenu()" style="font-size:20px;">🎬 2D/3D Video</a>
+                <a href="service.html?page=content-creator" onclick="closeMobileMenu()" style="font-size:20px;">✍️ Content Creator</a>
+                <a href="service.html?page=printing" onclick="closeMobileMenu()" style="font-size:20px;">🖨️ Printing</a>
+                <a href="service.html?page=professional-email" onclick="closeMobileMenu()" style="font-size:20px;">📧 Professional Email</a>
+                <a href="service.html?page=hosting" onclick="closeMobileMenu()" style="font-size:20px;">☁️ Hosting</a>
+            </div>
+        </div>
+        <a href="about.html" onclick="closeMobileMenu()">About Us</a>
+        <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Hero -->
+    <section class="hero" aria-label="Page Hero">
+        <video class="hero__video" autoplay loop muted playsinline src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260217_030345_246c0224-10a4-422c-b324-070b7c0eceda.mp4"></video>
+        <div class="hero__video-overlay"></div>
+
+        
+        <!-- New Floating Premium Navbar -->
+        <div class="navbar-wrapper" id="navbarWrapper">
+            <nav class="navbar-new" role="navigation" aria-label="Primary Navigation">
+                <a href="index.html" class="nav-logo" aria-label="Amazing WebTech Home">
+                    <img src="logo2.png" alt="Amazing WebTech">
+                </a>
+                
+                <ul class="nav-links" role="list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="navbar__dropdown-wrap">
+                        <a href="service.html" class="nav-link">
+                            Services
+                            <svg class="navbar__dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </a>
+                        <div class="navbar__dropdown">
+                            <div class="dropdown-label">Design & Development</div>
+                            <a href="service.html?page=web-design" class="dropdown-item">
+                                <div class="dropdown-icon">💻</div>
+                                <div class="dropdown-text">
+                                    <span>Website Design & Dev</span>
+                                    <span>Responsive, fast, scalable</span>
+                                </div>
+                            </a>
+                            <a href="service.html?page=ui-ux" class="dropdown-item">
+                                <div class="dropdown-icon">✨</div>
+                                <div class="dropdown-text">
+                                    <span>UI/UX Design</span>
+                                    <span>Intuitive & beautiful</span>
+                                </div>
+                            </a>
+                            <a href="service.html?page=mobile-app" class="dropdown-item">
+                                <div class="dropdown-icon">📱</div>
+                                <div class="dropdown-text">
+                                    <span>Mobile App</span>
+                                    <span>iOS, Android, cross-platform</span>
+                                </div>
+                            </a>
+                            <a href="service.html?page=branding" class="dropdown-item">
+                                <div class="dropdown-icon">🎯</div>
+                                <div class="dropdown-text">
+                                    <span>Corporate Branding</span>
+                                    <span>Identity & guidelines</span>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-label">Marketing & SEO</div>
+                            <a href="service.html?page=digital-marketing" class="dropdown-item">
+                                <div class="dropdown-icon">📈</div>
+                                <div class="dropdown-text">
+                                    <span>Digital Marketing</span>
+                                    <span>Ads, social, email, CRO</span>
+                                </div>
+                            </a>
+                            <a href="service.html?page=seo" class="dropdown-item">
+                                <div class="dropdown-icon">🔍</div>
+                                <div class="dropdown-text">
+                                    <span>SEO</span>
+                                    <span>Rank higher, grow faster</span>
+                                </div>
+                            </a>
+                            <a href="service.html?page=aeo" class="dropdown-item">
+                                <div class="dropdown-icon">🗣️</div>
+                                <div class="dropdown-text">
+                                    <span>AEO</span>
+                                    <span>Answer Engine Optimization</span>
+                                </div>
+                            </a>
+                            <a href="service.html?page=geo" class="dropdown-item">
+                                <div class="dropdown-icon">🤖</div>
+                                <div class="dropdown-text">
+                                    <span>GEO</span>
+                                    <span>Generative Engine Optimization</span>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-label">Content & Media</div>
+                            <a href="service.html?page=video-2d-3d" class="dropdown-item">
+                                <div class="dropdown-icon">🎬</div>
+                                <div class="dropdown-text">
+                                    <span>2D / 3D Video</span>
+                                    <span>Animation & production</span>
+                                </div>
+                            </a>
+                            <a href="service.html?page=content-creator" class="dropdown-item">
+                                <div class="dropdown-icon">✍️</div>
+                                <div class="dropdown-text">
+                                    <span>Content Creator</span>
+                                    <span>Videos, blogs, graphics</span>
+                                </div>
+                            </a>
+                            <a href="service.html?page=printing" class="dropdown-item">
+                                <div class="dropdown-icon">🖨️</div>
+                                <div class="dropdown-text">
+                                    <span>Printing Solutions</span>
+                                    <span>Cards, brochures, packaging</span>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-label">Infrastructure</div>
+                            <a href="service.html?page=professional-email" class="dropdown-item">
+                                <div class="dropdown-icon">📧</div>
+                                <div class="dropdown-text">
+                                    <span>Professional Email</span>
+                                    <span>Google Workspace, Microsoft</span>
+                                </div>
+                            </a>
+                            <a href="service.html?page=hosting" class="dropdown-item">
+                                <div class="dropdown-icon">☁️</div>
+                                <div class="dropdown-text">
+                                    <span>Web Hosting</span>
+                                    <span>Fast, secure, managed</span>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <a href="contact.html" class="nav-btn" aria-label="Get Started">Get Started</a>
+                    <button class="mobile-menu-btn" onclick="openMobileMenu()" aria-label="Open Menu">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+        </div>
+
+
+        <div class="hero__content">
+            <div class="hero__badge">
+                <span class="hero__badge-dot"></span>
+                <span>Let's Connect</span>
+            </div>
+            <h1 class="hero__heading">Contact Us</h1>
+            <p class="hero__subtitle">Have a project in mind? We'd love to hear about it. Reach out and let's start a
+                conversation about how we can help your business grow.</p>
+        </div>
+    </section>
+
+    <!-- Contact Cards -->
+    <section class="section" style="padding-top:0;">
+        <div class="contact-cards">
+            <div class="contact-card">
+                <div class="contact-card-icon">📞</div>
+                <h3>Call Us</h3>
+                <p><a href="tel:+919099014070">+91 90990 14070</a></p>
+                <p style="margin-top:6px;">Mon — Fri, 9am — 6pm IST</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-card-icon">✉️</div>
+                <h3>Email Us</h3>
+                <p><a href="mailto:info@amazingwebtech.com">info@amazingwebtech.com</a></p>
+                <p style="margin-top:6px;">We reply within 24 hours</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-card-icon">📍</div>
+                <h3>Visit Us</h3>
+                <p>Ahmedabad, Gujarat,<br>India</p>
+                <p style="margin-top:6px;">By appointment only</p>
+            </div>
+        </div>
+
+        <!-- Contact Form + Info -->
+        <div class="contact-grid">
+            <div>
+                <div style="margin-bottom:40px;">
+                    <span class="section-subtitle">Send a Message</span>
+                    <h2 class="section-title"><span>Tell us about your project</span></h2>
+                </div>
+
+                <form class="contact-form" id="contactForm" novalidate>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label class="form-label">Full Name <span class="required">*</span></label>
+                            <input type="text" class="form-input" id="fname" name="name" placeholder="John Doe" required
+                                minlength="2">
+                            <div class="form-error" id="fname-error">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <line x1="12" y1="8" x2="12" y2="12" />
+                                    <line x1="12" y1="16" x2="12.01" y2="16" />
+                                </svg>
+                                <span>Please enter your full name</span>
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <label class="form-label">Email Address <span class="required">*</span></label>
+                            <input type="email" class="form-input" id="femail" name="email"
+                                placeholder="john@company.com" required>
+                            <div class="form-error" id="femail-error">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <line x1="12" y1="8" x2="12" y2="12" />
+                                    <line x1="12" y1="16" x2="12.01" y2="16" />
+                                </svg>
+                                <span>Please enter a valid email address</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" class="form-input" id="fphone" name="phone" placeholder="+91 98765 43210">
+                            <div class="form-error" id="fphone-error">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <line x1="12" y1="8" x2="12" y2="12" />
+                                    <line x1="12" y1="16" x2="12.01" y2="16" />
+                                </svg>
+                                <span>Please enter a valid phone number</span>
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <label class="form-label">Company</label>
+                            <input type="text" class="form-input" id="fcompany" name="company"
+                                placeholder="Your Company">
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label class="form-label">What services are you interested in?</label>
+                        <div class="service-options" id="serviceOptions">
+                            <label class="service-chip" tabindex="0"><input type="checkbox" name="services"
+                                    value="Web Design"> Web Design</label>
+                            <label class="service-chip" tabindex="0"><input type="checkbox" name="services"
+                                    value="UI/UX"> UI/UX</label>
+                            <label class="service-chip" tabindex="0"><input type="checkbox" name="services"
+                                    value="Digital Marketing"> Digital Marketing</label>
+                            <label class="service-chip" tabindex="0"><input type="checkbox" name="services"
+                                    value="Branding"> Branding</label>
+                            <label class="service-chip" tabindex="0"><input type="checkbox" name="services"
+                                    value="Mobile App"> Mobile App</label>
+                            <label class="service-chip" tabindex="0"><input type="checkbox" name="services"
+                                    value="Promo Video"> Promo Video</label>
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label class="form-label">Estimated Budget</label>
+                        <div class="budget-slider-wrap">
+                            <div class="budget-display">
+                                <span>₹10K</span>
+                                <span class="budget-value" id="budgetValue">₹50K — ₹1L</span>
+                                <span>₹10L+</span>
+                            </div>
+                            <input type="range" class="budget-slider" id="budgetSlider" min="0" max="4" value="2"
+                                step="1">
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label class="form-label">Project Details <span class="required">*</span></label>
+                        <textarea class="form-input" id="fmessage" name="message"
+                            placeholder="Tell us about your project, goals, timeline, and any specific requirements..."
+                            required minlength="20" maxlength="2000"></textarea>
+                        <div class="char-counter" id="charCounter">0 / 2000</div>
+                        <div class="form-error" id="fmessage-error">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <line x1="12" y1="8" x2="12" y2="12" />
+                                <line x1="12" y1="16" x2="12.01" y2="16" />
+                            </svg>
+                            <span>Please describe your project (at least 20 characters)</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span class="btn-text">Send Message</span>
+                        <div class="spinner"></div>
+                    </button>
+                </form>
+
+                <!-- Success State -->
+                <div class="form-success" id="formSuccess">
+                    <div class="form-success-icon">✓</div>
+                    <h3>Message Sent!</h3>
+                    <p>Thank you for reaching out! Our team will review your inquiry and get back to you within 24
+                        hours.</p>
+                    <div class="ref-number" id="refNumber"></div>
+                    <button class="btn-pill btn-pill--light" onclick="resetForm()">
+                        <span class="btn-pill__inner">Send Another Message</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="contact-sidebar">
+                <h3>Get in Touch!</h3>
+                <p>We're ready to listen to your needs and would like to talk about how we can grow your business
+                    online. Whether you're starting from scratch or looking to revamp your existing presence, we're here
+                    to help.</p>
+
+                <div class="info-block">
+                    <h4>Headquarters</h4>
+                    <ul>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                            Ahmedabad, Gujarat, India
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round">
+                                <path
+                                    d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+                            </svg>
+                            <a href="tel:+919099014070">+91 90990 14070</a>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                            <a href="mailto:info@amazingwebtech.com">info@amazingwebtech.com</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="info-block">
+                    <h4>Business Hours</h4>
+                    <ul>
+                        <li>Monday — Friday: 9:00 AM — 6:00 PM</li>
+                        <li>Saturday: 10:00 AM — 2:00 PM</li>
+                        <li>Sunday: Closed</li>
+                    </ul>
+                </div>
+
+                <div class="info-block">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="X / Twitter">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div class="map-section">
+        <div class="map-wrap">
+            <div class="map-info">
+                <h2>Find Our Office</h2>
+                <p>Located in the heart of Ahmedabad, our office is where the magic happens. While we work with clients
+                    globally, we always welcome visitors by appointment.</p>
+                <p>Come say hello — we'll have coffee ready! ☕</p>
+                <div class="office-hours">
+                    <div class="hours-item">
+                        <div class="day">Mon — Fri</div>
+                        <div class="time">9:00 AM — 6:00 PM</div>
+                    </div>
+                    <div class="hours-item">
+                        <div class="day">Saturday</div>
+                        <div class="time">10:00 AM — 2:00 PM</div>
+                    </div>
+                    <div class="hours-item">
+                        <div class="day">Sunday</div>
+                        <div class="time">Closed</div>
+                    </div>
+                    <div class="hours-item">
+                        <div class="day">Holidays</div>
+                        <div class="time">By appointment</div>
+                    </div>
+                </div>
+            </div>
+            <div class="map-embed">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d235014.32673307073!2d72.41492854999999!3d23.02018175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C%20Gujarat%2C%20India!5e0!3m2!1sen!2sus!4v1700000000000!5e2"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-subtitle">FAQ</span>
+            <h2 class="section-title"><span>Frequently Asked Questions</span></h2>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">How long does a typical project take?<svg
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                    </svg></button>
+                <div class="faq-answer">
+                    <p>Project timelines vary depending on scope and complexity. A simple website typically takes 4–6
+                        weeks, while larger projects like e-commerce platforms or custom web applications can take 8–16
+                        weeks. We'll provide a detailed timeline during our initial consultation.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">What is your pricing structure?<svg
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                    </svg></button>
+                <div class="faq-answer">
+                    <p>We offer both fixed-price and hourly engagement models. Every project is unique, so we provide
+                        custom quotes after understanding your requirements. We're transparent about costs — no hidden
+                        fees, no surprises. Contact us for a free estimate.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Do you provide ongoing support and
+                    maintenance?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round">
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                    </svg></button>
+                <div class="faq-answer">
+                    <p>Absolutely! We offer flexible maintenance plans to keep your website secure, up-to-date, and
+                        performing at its best. From monthly retainer packages to on-demand support, we've got you
+                        covered long after launch.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">What technologies do you work with?<svg
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                    </svg></button>
+                <div class="faq-answer">
+                    <p>We work with a wide range of modern technologies including React, Next.js, Vue.js, WordPress,
+                        Shopify, Node.js, Python, and more. We choose the tech stack that best fits your project's
+                        needs, scalability requirements, and long-term goals.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Can you work with clients outside India?<svg
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                    </svg></button>
+                <div class="faq-answer">
+                    <p>Yes! We work with clients across 15+ countries and have extensive experience with remote
+                        collaboration. We use tools like Slack, Zoom, Notion, and Figma to ensure seamless communication
+                        and project management regardless of time zones.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">What happens after I submit the form?<svg
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                    </svg></button>
+                <div class="faq-answer">
+                    <p>Once you submit your inquiry, our team reviews it within 24 hours. A dedicated project consultant
+                        will reach out to schedule a free discovery call where we'll discuss your goals, timeline, and
+                        budget. After that, we'll send you a detailed proposal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <img src="logo-dark.png" alt="Amazing WebTech" style="height: 48px; margin-right: auto; margin-bottom: 15px;">
+            <p class="footer-text">&copy; 2026 Amazing Webtech. All Rights Reserved.</p>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        // ── Mobile Menu ──
+        function openMobileMenu() {
+            document.getElementById('mobileMenu').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMobileMenu() {
+            document.getElementById('mobileMenu').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // ── Desktop Navbar Dropdown ──
+        (function() {
+            var wraps = document.querySelectorAll('.navbar__dropdown-wrap');
+            wraps.forEach(function(wrap) {
+                var closeTimer;
+                wrap.addEventListener('mouseenter', function() {
+                    clearTimeout(closeTimer);
+                    wrap.classList.add('open');
+                });
+                wrap.addEventListener('mouseleave', function() {
+                    closeTimer = setTimeout(function() {
+                        wrap.classList.remove('open');
+                    }, 150);
+                });
+                var dropdown = wrap.querySelector('.navbar__dropdown');
+                if (dropdown) {
+                    dropdown.addEventListener('mouseenter', function() {
+                        clearTimeout(closeTimer);
+                    });
+                    dropdown.addEventListener('mouseleave', function() {
+                        closeTimer = setTimeout(function() {
+                            wrap.classList.remove('open');
+                        }, 150);
+                    });
+                }
+            });
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.navbar__dropdown-wrap')) {
+                    wraps.forEach(function(w) { w.classList.remove('open'); });
+                }
+            });
+        })();
+
+        // ── Mobile Dropdown Toggle ──
+        function toggleMobileDropdown() {
+            var btn = document.getElementById('mobileDropdownBtn');
+            var list = document.getElementById('mobileDropdownList');
+            btn.classList.toggle('open');
+            if (list.style.display === 'none' || !list.style.display) {
+                list.style.display = 'flex';
+            } else {
+                list.style.display = 'none';
+            }
+        }
+
+        // ── Navbar Scroll ──
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80) {
+                navbar.style.background = 'rgba(0, 0, 0, 0.8)';
+                navbar.style.backdropFilter = 'blur(20px)';
+                navbar.style.webkitBackdropFilter = 'blur(20px)';
+            } else {
+                navbar.style.background = 'transparent';
+                navbar.style.backdropFilter = 'none';
+                navbar.style.webkitBackdropFilter = 'none';
+            }
+        });
+
+        // ── Toast ──
+        function showToast(message, type) {
+            type = type || 'success';
+            var toast = document.getElementById('toast');
+            toast.className = 'toast toast-' + type;
+            toast.innerHTML = (type === 'success' ? '✓ ' : '⚠ ') + message;
+            toast.classList.add('show');
+            setTimeout(function () { toast.classList.remove('show'); }, 4000);
+        }
+
+        // ── Service Chips ──
+        document.querySelectorAll('.service-chip').forEach(function (chip) {
+            chip.addEventListener('click', function () { chip.classList.toggle('selected'); });
+            chip.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); chip.classList.toggle('selected'); }
+            });
+        });
+
+        // ── Budget Slider ──
+        var budgetLabels = ['Under ₹50K', '₹50K — ₹1L', '₹1L — ₹3L', '₹3L — ₹5L', '₹5L+'];
+        var budgetSlider = document.getElementById('budgetSlider');
+        var budgetValue = document.getElementById('budgetValue');
+        budgetSlider.addEventListener('input', function () { budgetValue.textContent = budgetLabels[budgetSlider.value]; });
+
+        // ── Character Counter ──
+        var messageField = document.getElementById('fmessage');
+        var charCounter = document.getElementById('charCounter');
+        messageField.addEventListener('input', function () {
+            var len = messageField.value.length;
+            charCounter.textContent = len + ' / 2000';
+            charCounter.className = 'char-counter';
+            if (len > 1800) charCounter.classList.add('limit');
+            else if (len > 1500) charCounter.classList.add('warn');
+        });
+
+        // ── Validation ──
+        function validateField(field, errorId, validator) {
+            var error = document.getElementById(errorId);
+            var value = field.value.trim();
+            if (!validator(value)) {
+                field.classList.add('error'); field.classList.remove('success');
+                error.classList.add('visible'); return false;
+            } else {
+                field.classList.remove('error'); field.classList.add('success');
+                error.classList.remove('visible'); return true;
+            }
+        }
+
+        function isValidEmail(email) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
+        function isValidPhone(phone) { if (!phone) return true; return /^[\+]?[\d\s\-\(\)]{7,20}$/.test(phone); }
+
+        document.getElementById('fname').addEventListener('blur', function () {
+            if (this.value.trim()) validateField(this, 'fname-error', function (v) { return v.length >= 2; });
+        });
+        document.getElementById('femail').addEventListener('blur', function () {
+            if (this.value.trim()) validateField(this, 'femail-error', isValidEmail);
+        });
+        document.getElementById('fphone').addEventListener('blur', function () {
+            if (this.value.trim()) validateField(this, 'fphone-error', isValidPhone);
+        });
+        document.getElementById('fmessage').addEventListener('blur', function () {
+            if (this.value.trim()) validateField(this, 'fmessage-error', function (v) { return v.length >= 20; });
+        });
+
+        document.querySelectorAll('.form-input').forEach(function (input) {
+            input.addEventListener('focus', function () {
+                this.classList.remove('error');
+                var errorEl = this.parentElement.querySelector('.form-error');
+                if (errorEl) errorEl.classList.remove('visible');
+            });
+        });
+
+        // ── Form Submission ──
+        var contactForm = document.getElementById('contactForm');
+        var submitBtn = document.getElementById('submitBtn');
+
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            var nameValid = validateField(document.getElementById('fname'), 'fname-error', function (v) { return v.length >= 2; });
+            var emailValid = validateField(document.getElementById('femail'), 'femail-error', isValidEmail);
+            var phoneValid = validateField(document.getElementById('fphone'), 'fphone-error', isValidPhone);
+            var messageValid = validateField(document.getElementById('fmessage'), 'fmessage-error', function (v) { return v.length >= 20; });
+
+            if (!nameValid || !emailValid || !phoneValid || !messageValid) {
+                showToast('Please fix the errors above', 'error');
+                var firstError = document.querySelector('.form-input.error');
+                if (firstError) { firstError.scrollIntoView({ behavior: 'smooth', block: 'center' }); firstError.focus(); }
+                return;
+            }
+
+            var formData = {
+                name: document.getElementById('fname').value.trim(),
+                email: document.getElementById('femail').value.trim(),
+                phone: document.getElementById('fphone').value.trim(),
+                company: document.getElementById('fcompany').value.trim(),
+                services: Array.from(document.querySelectorAll('.service-chip.selected input')).map(function (i) { return i.value; }),
+                budget: budgetLabels[budgetSlider.value],
+                message: document.getElementById('fmessage').value.trim(),
+                submittedAt: new Date().toISOString()
+            };
+
+            var submissions = JSON.parse(localStorage.getItem('awt_submissions') || '[]');
+            submissions.push(formData);
+            localStorage.setItem('awt_submissions', JSON.stringify(submissions));
+
+            submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
+
+            setTimeout(function () {
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+
+                var refNum = 'AWT-' + Date.now().toString(36).toUpperCase();
+                document.getElementById('refNumber').textContent = 'Reference: ' + refNum;
+
+                contactForm.style.display = 'none';
+                document.getElementById('formSuccess').classList.add('show');
+
+                showToast('Message sent successfully!', 'success');
+                console.log('Form submitted:', formData);
+
+                // 1. Download Submitted Details (Receipt)
+                var receiptContent = "Amazing WebTech - Contact Submission Receipt\n" +
+                                     "Reference: " + refNum + "\n\n" +
+                                     "Name: " + formData.name + "\n" +
+                                     "Email: " + formData.email + "\n" +
+                                     "Phone: " + formData.phone + "\n" +
+                                     "Company: " + formData.company + "\n" +
+                                     "Budget: " + formData.budget + "\n" +
+                                     "Services: " + formData.services.join(', ') + "\n\n" +
+                                     "Message:\n" + formData.message;
+                var receiptBlob = new Blob([receiptContent], { type: 'text/plain' });
+                var receiptUrl = URL.createObjectURL(receiptBlob);
+                var receiptLink = document.createElement('a');
+                receiptLink.href = receiptUrl;
+                receiptLink.download = 'AWT_Submission_Receipt.txt';
+                document.body.appendChild(receiptLink);
+                receiptLink.click();
+                document.body.removeChild(receiptLink);
+
+                // 2. Download Company Contact Card (vCard)
+                setTimeout(function() {
+                    var vCardContent = "BEGIN:VCARD\n" +
+                                       "VERSION:3.0\n" +
+                                       "FN:Amazing WebTech\n" +
+                                       "ORG:Amazing WebTech\n" +
+                                       "TEL:+1 (555) 123-4567\n" +
+                                       "EMAIL:hello@amazingwebtech.com\n" +
+                                       "URL:https://amazingwebtech.com\n" +
+                                       "END:VCARD";
+                    var vCardBlob = new Blob([vCardContent], { type: 'text/vcard' });
+                    var vCardUrl = URL.createObjectURL(vCardBlob);
+                    var vCardLink = document.createElement('a');
+                    vCardLink.href = vCardUrl;
+                    vCardLink.download = 'Amazing_WebTech_Contact.vcf';
+                    document.body.appendChild(vCardLink);
+                    vCardLink.click();
+                    document.body.removeChild(vCardLink);
+                }, 500); // 500ms delay to ensure browser allows multiple downloads
+
+            }, 2000);
+        });
+
+        // ── Reset Form ──
+        function resetForm() {
+            contactForm.reset();
+            contactForm.style.display = 'flex';
+            document.getElementById('formSuccess').classList.remove('show');
+            document.querySelectorAll('.form-input').forEach(function (i) { i.classList.remove('error', 'success'); });
+            document.querySelectorAll('.form-error').forEach(function (e) { e.classList.remove('visible'); });
+            document.querySelectorAll('.service-chip').forEach(function (c) { c.classList.remove('selected'); });
+            budgetSlider.value = 2;
+            budgetValue.textContent = budgetLabels[2];
+            charCounter.textContent = '0 / 2000';
+            charCounter.className = 'char-counter';
+            contactForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // ── FAQ Toggle ──
+        function toggleFaq(btn) {
+            var item = btn.parentElement;
+            var isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(function (i) { i.classList.remove('open'); });
+            if (!isOpen) item.classList.add('open');
+        }
+    
+        // ── 1. Custom Cursor ──
+        var cursorDot = document.getElementById('cursorDot');
+        var cursorOutline = document.getElementById('cursorOutline');
+        if (cursorDot && cursorOutline) {
+            var mouseX = 0, mouseY = 0;
+            var outlineX = 0, outlineY = 0;
+
+            document.addEventListener('mousemove', function(e) {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                cursorDot.style.left = mouseX + 'px';
+                cursorDot.style.top = mouseY + 'px';
+            });
+
+            function animateCursor() {
+                outlineX += (mouseX - outlineX) * 0.12;
+                outlineY += (mouseY - outlineY) * 0.12;
+                cursorOutline.style.left = outlineX + 'px';
+                cursorOutline.style.top = outlineY + 'px';
+                requestAnimationFrame(animateCursor);
+            }
+            animateCursor();
+
+            // Hover effect on interactive elements
+            var interactiveElements = document.querySelectorAll('a, button, .feature-card, .portfolio-item, .filter-btn, .dropdown-item, input, textarea');
+            interactiveElements.forEach(function(el) {
+                el.addEventListener('mouseenter', function() {
+                    cursorDot.classList.add('hovering');
+                    cursorOutline.classList.add('hovering');
+                });
+                el.addEventListener('mouseleave', function() {
+                    cursorDot.classList.remove('hovering');
+                    cursorOutline.classList.remove('hovering');
+                });
+            });
+
+            // ── Hide cursor on mobile ──
+            if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+                cursorDot.style.display = 'none';
+                cursorOutline.style.display = 'none';
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
