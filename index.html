@@ -9,7 +9,7 @@
         content="We are a web design agency helping businesses of all sizes get a better return from online activities." />
 
     <link rel="preconnect" href="https://api.fontshare.com" />
-    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
     <style>
         *,
@@ -24,7 +24,7 @@
         body {
             height: 100%;
             background: #000;
-            font-family: 'General Sans', sans-serif;
+            font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
             color: #fff;
@@ -413,12 +413,71 @@
             align-items: center;
             justify-content: center;
             border-radius: 9999px;
-            font-size: 14px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
             font-weight: 500;
-            padding: 11px 29px;
+            padding: 14px 36px;
             white-space: nowrap;
             background: #000;
             color: #fff;
+            width: 100%;
+        }
+
+        .btn-gradient {
+            display: inline-flex;
+            padding: 2px;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, #fff, #e0e0e0);
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 14px 36px;
+            white-space: nowrap;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: background 0.3s, border-color 0.3s, transform 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .hero-animated-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: linear-gradient(45deg, #0a0a0a, #1a1a2e, #16213e, #0f3460);
+            background-size: 400% 400%;
+            animation: gradientBG 12s ease infinite;
+            opacity: 0.8;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         /* ── Hero Content ── */
@@ -436,7 +495,7 @@
             padding-left: 24px;
             padding-right: 24px;
             gap: 40px;
-            font-family: 'Copperplate', 'Papyrus', fantasy;
+            font-family: 'Poppins', sans-serif;
         }
 
         .hero__badge {
@@ -502,11 +561,12 @@
         }
 
         .hero__heading {
-            max-width: 613px;
-            font-size: 56px;
+            max-width: 800px;
+            font-size: clamp(2.5rem, 6vw + 1rem, 5.5rem);
             font-weight: 500;
-            line-height: 1.28;
-            letter-spacing: -0.5px;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            text-transform: none;
         }
 
         .hero__heading .reveal-text span {
@@ -515,6 +575,14 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
             color: transparent;
+        }
+
+        .hero__gradient-text {
+            background: linear-gradient(135deg, #ffffff 30%, #a0a0a0 100%) !important;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            color: transparent !important;
+            -webkit-text-fill-color: transparent !important;
         }
 
         .hero__subtitle {
@@ -529,6 +597,32 @@
 
         .hero__cta {
             animation: fadeInUp 0.8s ease 0.6s both;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .hero__heading {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+            .hero__cta {
+                flex-direction: column;
+                gap: 16px;
+                width: 100%;
+                max-width: 320px;
+            }
+            .btn-outline, .btn-gradient__inner {
+                width: 100%;
+                padding: 12px 24px;
+            }
+            .btn-gradient {
+                width: 100%;
+            }
         }
 
         /* ── Scroll Indicator ── */
@@ -740,7 +834,7 @@
             font-size: 32px;
             margin-bottom: 24px;
             width: 60px;
-            height: 60px;
+            height: 85px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1525,7 +1619,7 @@
             gap: 12px;
             padding: 12px 16px;
             border-radius: 10px;
-            font-family: 'Copperplate', 'Papyrus', fantasy;
+            font-family: 'Poppins', sans-serif;
             font-size: 14px;
             font-weight: 500;
             color: rgba(255, 255, 255, 0.7);
@@ -1588,7 +1682,7 @@
         }
 
         .dropdown-label {
-            font-family: 'Copperplate', 'Papyrus', fantasy;
+            font-family: 'Poppins', sans-serif;
             font-size: 10px;
             text-transform: uppercase;
             letter-spacing: 1.5px;
@@ -1692,7 +1786,7 @@
 
         .cursor-outline.hovering {
             width: 60px;
-            height: 60px;
+            height: 85px;
             border-color: rgba(255, 255, 255, 0.15);
             background: rgba(255, 255, 255, 0.03);
         }
@@ -2006,7 +2100,7 @@
             -webkit-backdrop-filter: blur(28px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 9999px;
-            padding: 12px 16px 12px 24px;
+            padding: 8px 12px 8px 20px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             transition: all 0.4s ease;
         }
@@ -2020,7 +2114,7 @@
         .nav-logo {
             display: flex;
             align-items: center;
-            height: 60px;
+            height: 52px;
             text-decoration: none;
             transition: transform 0.3s;
             flex: 1;
@@ -2032,6 +2126,7 @@
 
         .nav-logo img {
             height: 100%;
+            max-height: 52px;
             width: auto;
             object-fit: contain;
         }
@@ -2051,7 +2146,7 @@
             align-items: center;
             gap: 6px;
             color: rgba(255, 255, 255, 0.75);
-            font-family: 'Copperplate', 'Papyrus', fantasy;
+            font-family: 'Poppins', sans-serif;
             font-size: 15px;
             font-weight: 600;
             letter-spacing: 0.5px;
@@ -2085,7 +2180,7 @@
             justify-content: center;
             background: linear-gradient(135deg, #fff, #e0e0e0);
             color: #000;
-            font-family: 'Copperplate', 'Papyrus', fantasy;
+            font-family: 'Poppins', sans-serif;
             font-size: 15px;
             font-weight: 700;
             letter-spacing: 0.5px;
@@ -2140,7 +2235,7 @@
             }
 
             .nav-logo {
-                height: 36px;
+                height: 52px;
             }
 
             .nav-links {
@@ -2160,90 +2255,11 @@
     <div class="cursor-dot" id="cursorDot"></div>
     <div class="cursor-outline" id="cursorOutline"></div>
 
-    <!-- Preloader -->
-    <div class="preloader" id="preloader">
-        <div class="preloader-logo">AMAZING WEBTECH</div>
-    </div>
-
-    <!-- Back to Top -->
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"
-        aria-label="Back to top">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="18 15 12 9 6 15"></polyline>
-        </svg>
-    </button>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close Menu">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-        </button>
-        <a href="#home" onclick="closeMobileMenu()">Home</a>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
-            <button class="mobile-dropdown-toggle" id="mobileDropdownBtn" onclick="toggleMobileDropdown()">
-                Services
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-            </button>
-            <div id="mobileDropdownList"
-                style="display:none;flex-direction:column;align-items:center;gap:14px;padding:10px 0;">
-                <a href="service.html?page=web-design" onclick="closeMobileMenu()" style="font-size:20px;">💻 Website
-                    Design</a>
-                <a href="service.html?page=ui-ux" onclick="closeMobileMenu()" style="font-size:20px;">✨ UI/UX Design</a>
-                <a href="service.html?page=mobile-app" onclick="closeMobileMenu()" style="font-size:20px;">📱 Mobile
-                    App</a>
-                <a href="service.html?page=branding" onclick="closeMobileMenu()" style="font-size:20px;">🎯 Branding</a>
-                <a href="service.html?page=digital-marketing" onclick="closeMobileMenu()" style="font-size:20px;">📈
-                    Digital Marketing</a>
-                <a href="service.html?page=seo" onclick="closeMobileMenu()" style="font-size:20px;">🔍 SEO</a>
-                <a href="service.html?page=aeo" onclick="closeMobileMenu()" style="font-size:20px;">🗣️ AEO</a>
-                <a href="service.html?page=geo" onclick="closeMobileMenu()" style="font-size:20px;">🤖 GEO</a>
-                <a href="service.html?page=video-2d-3d" onclick="closeMobileMenu()" style="font-size:20px;">🎬 2D/3D
-                    Video</a>
-                <a href="service.html?page=content-creator" onclick="closeMobileMenu()" style="font-size:20px;">✍️
-                    Content Creator</a>
-                <a href="service.html?page=printing" onclick="closeMobileMenu()" style="font-size:20px;">🖨️
-                    Printing</a>
-                <a href="service.html?page=professional-email" onclick="closeMobileMenu()" style="font-size:20px;">📧
-                    Professional Email</a>
-                <a href="service.html?page=hosting" onclick="closeMobileMenu()" style="font-size:20px;">☁️ Hosting</a>
-            </div>
-        </div>
-        <a href="about.html" onclick="closeMobileMenu()">About Us</a>
-        <a href="#portfolio" onclick="closeMobileMenu()">Portfolio</a>
-        <a href="#process" onclick="closeMobileMenu()">Process</a>
-        <a href="#testimonials" onclick="closeMobileMenu()">Testimonials</a>
-        <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
-    </div>
-
-    <!-- Toast -->
-    <div class="toast" id="toast"></div>
-
-    <!-- Hero -->
-    <section class="hero" id="home" aria-label="Hero Section">
-        <div class="hero__video-wrap" aria-hidden="true">
-            <video class="hero__video"
-                src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260217_030345_246c0224-10a4-422c-b324-070b7c0eceda.mp4"
-                autoplay muted loop playsinline preload="auto"></video>
-            <div class="hero__overlay"></div>
-        </div>
-
-        <div class="hero__glow hero__glow--1" aria-hidden="true"></div>
-        <div class="hero__glow hero__glow--2" aria-hidden="true"></div>
-
-
-        <!-- New Floating Premium Navbar -->
+<!-- New Floating Premium Navbar -->
         <div class="navbar-wrapper" id="navbarWrapper">
             <nav class="navbar-new" role="navigation" aria-label="Primary Navigation">
                 <a href="index.html" class="nav-logo" aria-label="Amazing WebTech Home">
-                    <img src="logo2.png" alt="Amazing WebTech">
+                    <img src="logo2.webp" alt="Amazing WebTech">
                 </a>
 
                 <ul class="nav-links" role="list">
@@ -2383,22 +2399,106 @@
             </nav>
         </div>
 
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-logo">AMAZING WEBTECH</div>
+    </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"
+        aria-label="Back to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close Menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <a href="#home" onclick="closeMobileMenu()">Home</a>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+            <button class="mobile-dropdown-toggle" id="mobileDropdownBtn" onclick="toggleMobileDropdown()">
+                Services
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </button>
+            <div id="mobileDropdownList"
+                style="display:none;flex-direction:column;align-items:center;gap:14px;padding:10px 0;">
+                <a href="service.html?page=web-design" onclick="closeMobileMenu()" style="font-size:20px;">💻 Website
+                    Design</a>
+                <a href="service.html?page=ui-ux" onclick="closeMobileMenu()" style="font-size:20px;">✨ UI/UX Design</a>
+                <a href="service.html?page=mobile-app" onclick="closeMobileMenu()" style="font-size:20px;">📱 Mobile
+                    App</a>
+                <a href="service.html?page=branding" onclick="closeMobileMenu()" style="font-size:20px;">🎯 Branding</a>
+                <a href="service.html?page=digital-marketing" onclick="closeMobileMenu()" style="font-size:20px;">📈
+                    Digital Marketing</a>
+                <a href="service.html?page=seo" onclick="closeMobileMenu()" style="font-size:20px;">🔍 SEO</a>
+                <a href="service.html?page=aeo" onclick="closeMobileMenu()" style="font-size:20px;">🗣️ AEO</a>
+                <a href="service.html?page=geo" onclick="closeMobileMenu()" style="font-size:20px;">🤖 GEO</a>
+                <a href="service.html?page=video-2d-3d" onclick="closeMobileMenu()" style="font-size:20px;">🎬 2D/3D
+                    Video</a>
+                <a href="service.html?page=content-creator" onclick="closeMobileMenu()" style="font-size:20px;">✍️
+                    Content Creator</a>
+                <a href="service.html?page=printing" onclick="closeMobileMenu()" style="font-size:20px;">🖨️
+                    Printing</a>
+                <a href="service.html?page=professional-email" onclick="closeMobileMenu()" style="font-size:20px;">📧
+                    Professional Email</a>
+                <a href="service.html?page=hosting" onclick="closeMobileMenu()" style="font-size:20px;">☁️ Hosting</a>
+            </div>
+        </div>
+        <a href="about.html" onclick="closeMobileMenu()">About Us</a>
+        <a href="#portfolio" onclick="closeMobileMenu()">Portfolio</a>
+        <a href="#process" onclick="closeMobileMenu()">Process</a>
+        <a href="#testimonials" onclick="closeMobileMenu()">Testimonials</a>
+        <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Hero -->
+    <section class="hero" id="home" aria-label="Hero Section">
+        <div class="hero__video-wrap" aria-hidden="true">
+            <div class="hero-animated-bg"></div>
+            <video class="hero__video"
+                src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260217_030345_246c0224-10a4-422c-b324-070b7c0eceda.mp4"
+                autoplay muted loop playsinline preload="auto" style="opacity: 0.5; mix-blend-mode: overlay;"></video>
+            <div class="hero__overlay"></div>
+        </div>
+
+        <div class="hero__glow hero__glow--1" aria-hidden="true"></div>
+        <div class="hero__glow hero__glow--2" aria-hidden="true"></div>
+
+
+        
+
 
         <div class="hero__content">
             <div class="hero__badge" role="note">
                 <span class="hero__badge-dot" aria-hidden="true"></span>
-                <span>Digital Creative Agency</span>
+                <span>Premium Web Solutions</span>
             </div>
             <h1 class="hero__heading">
-                <div class="reveal-text reveal-text-delay-1"><span>DESIGN</span></div>
+                <div class="reveal-text reveal-text-delay-1"><span>We Build</span></div>
                 <br />
-                <div class="reveal-text reveal-text-delay-2"><span>DELIVERED</span></div>
+                <div class="reveal-text reveal-text-delay-2"><span class="hero__gradient-text">Amazing Websites</span></div>
             </h1>
-            <p class="hero__subtitle">We are a web design agency helping businesses of all sizes get a better return
-                from online activities. We create, design, build, host and support websites.</p>
+            <p class="hero__subtitle">We are a modern web design agency helping businesses get a better return from online activities. We create, design, build, host, and support digital experiences.</p>
             <div class="hero__cta">
-                <a href="#contact" class="btn-gradient" aria-label="Contact Us Now">
-                    <span class="btn-gradient__inner">Contact Us Now!</span>
+                <a href="#services" class="btn-gradient" aria-label="Get Started">
+                    <span class="btn-gradient__inner">Get Started</span>
+                </a>
+                <a href="contact.html" class="btn-outline" aria-label="Contact Us">
+                    Contact Us
                 </a>
             </div>
         </div>
