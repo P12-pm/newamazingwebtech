@@ -327,7 +327,7 @@
 
         /* ── Navbar Dropdown ── */
         .navbar__dropdown-wrap {
-            position: relative;
+            /* Position inherited, dropdown is relative to navbar-new */
         }
 
         .navbar__dropdown-arrow {
@@ -343,19 +343,29 @@
             top: 100%;
             left: 50%;
             transform: translateX(-50%) translateY(8px);
-            min-width: 280px;
+            width: max-content;
             background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 16px;
-            padding: 16px 8px 8px;
+            padding: 32px 40px;
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
             transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
             z-index: 100;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.03);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px 40px;
+        }
+
+        .navbar__dropdown-column {
+            display: flex;
+            flex-direction: column;
+            width: 260px;
+            gap: 4px;
         }
 
         .navbar__dropdown::before {
@@ -368,16 +378,7 @@
         }
 
         .navbar__dropdown::after {
-            content: '';
-            position: absolute;
-            top: -6px;
-            left: 50%;
-            transform: translateX(-50%) rotate(45deg);
-            width: 12px;
-            height: 12px;
-            background: rgba(10, 10, 10, 0.95);
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            border-left: 1px solid rgba(255, 255, 255, 0.08);
+            display: none;
         }
 
         .navbar__dropdown-wrap:hover .navbar__dropdown,
@@ -471,7 +472,9 @@
 
         @media (max-width: 1024px) {
             .navbar__dropdown {
-                min-width: 260px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+                padding: 16px;
             }
         }
 
@@ -980,6 +983,7 @@
             pointer-events: auto;
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -1205,104 +1209,112 @@
                             <svg class="navbar__dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </a>
                         <div class="navbar__dropdown">
-                            <div class="dropdown-label">Design & Development</div>
-                            <a href="service.html?page=web-design" class="dropdown-item">
-                                <div class="dropdown-icon">💻</div>
-                                <div class="dropdown-text">
-                                    <span>Website Design & Dev</span>
-                                    <span>Responsive, fast, scalable</span>
-                                </div>
-                            </a>
-                            <a href="service.html?page=ui-ux" class="dropdown-item">
-                                <div class="dropdown-icon">✨</div>
-                                <div class="dropdown-text">
-                                    <span>UI/UX Design</span>
-                                    <span>Intuitive & beautiful</span>
-                                </div>
-                            </a>
-                            <a href="service.html?page=mobile-app" class="dropdown-item">
-                                <div class="dropdown-icon">📱</div>
-                                <div class="dropdown-text">
-                                    <span>Mobile App</span>
-                                    <span>iOS, Android, cross-platform</span>
-                                </div>
-                            </a>
-                            <a href="service.html?page=branding" class="dropdown-item">
-                                <div class="dropdown-icon">🎯</div>
-                                <div class="dropdown-text">
-                                    <span>Corporate Branding</span>
-                                    <span>Identity & guidelines</span>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <div class="dropdown-label">Marketing & SEO</div>
-                            <a href="service.html?page=digital-marketing" class="dropdown-item">
-                                <div class="dropdown-icon">📈</div>
-                                <div class="dropdown-text">
-                                    <span>Digital Marketing</span>
-                                    <span>Ads, social, email, CRO</span>
-                                </div>
-                            </a>
-                            <a href="service.html?page=seo" class="dropdown-item">
-                                <div class="dropdown-icon">🔍</div>
-                                <div class="dropdown-text">
-                                    <span>SEO</span>
-                                    <span>Rank higher, grow faster</span>
-                                </div>
-                            </a>
-                            <a href="service.html?page=aeo" class="dropdown-item">
-                                <div class="dropdown-icon">🗣️</div>
-                                <div class="dropdown-text">
-                                    <span>AEO</span>
-                                    <span>Answer Engine Optimization</span>
-                                </div>
-                            </a>
-                            <a href="service.html?page=geo" class="dropdown-item">
-                                <div class="dropdown-icon">🤖</div>
-                                <div class="dropdown-text">
-                                    <span>GEO</span>
-                                    <span>Generative Engine Optimization</span>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <div class="dropdown-label">Content & Media</div>
-                            <a href="service.html?page=video-2d-3d" class="dropdown-item">
-                                <div class="dropdown-icon">🎬</div>
-                                <div class="dropdown-text">
-                                    <span>2D / 3D Video</span>
-                                    <span>Animation & production</span>
-                                </div>
-                            </a>
-                            <a href="service.html?page=content-creator" class="dropdown-item">
-                                <div class="dropdown-icon">✍️</div>
-                                <div class="dropdown-text">
-                                    <span>Content Creator</span>
-                                    <span>Videos, blogs, graphics</span>
-                                </div>
-                            </a>
-                            <a href="service.html?page=printing" class="dropdown-item">
-                                <div class="dropdown-icon">🖨️</div>
-                                <div class="dropdown-text">
-                                    <span>Printing Solutions</span>
-                                    <span>Cards, brochures, packaging</span>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <div class="dropdown-label">Infrastructure</div>
-                            <a href="service.html?page=professional-email" class="dropdown-item">
-                                <div class="dropdown-icon">📧</div>
-                                <div class="dropdown-text">
-                                    <span>Professional Email</span>
-                                    <span>Google Workspace, Microsoft</span>
-                                </div>
-                            </a>
-                            <a href="service.html?page=hosting" class="dropdown-item">
-                                <div class="dropdown-icon">☁️</div>
-                                <div class="dropdown-text">
-                                    <span>Web Hosting</span>
-                                    <span>Fast, secure, managed</span>
-                                </div>
-                            </a>
+                            <div class="navbar__dropdown-column">
+                                <div class="dropdown-label">Design & Development</div>
+                                <a href="service.html?page=web-design" class="dropdown-item">
+                                    <div class="dropdown-icon">💻</div>
+                                    <div class="dropdown-text">
+                                        <span>Website Design & Dev</span>
+                                        <span>Responsive, fast, scalable</span>
+                                    </div>
+                                </a>
+                                <a href="service.html?page=ui-ux" class="dropdown-item">
+                                    <div class="dropdown-icon">✨</div>
+                                    <div class="dropdown-text">
+                                        <span>UI/UX Design</span>
+                                        <span>Intuitive & beautiful</span>
+                                    </div>
+                                </a>
+                                <a href="service.html?page=mobile-app" class="dropdown-item">
+                                    <div class="dropdown-icon">📱</div>
+                                    <div class="dropdown-text">
+                                        <span>Mobile App</span>
+                                        <span>iOS, Android, cross-platform</span>
+                                    </div>
+                                </a>
+                                <a href="service.html?page=branding" class="dropdown-item">
+                                    <div class="dropdown-icon">🎯</div>
+                                    <div class="dropdown-text">
+                                        <span>Corporate Branding</span>
+                                        <span>Identity & guidelines</span>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="navbar__dropdown-column">
+                                <div class="dropdown-label">Marketing & SEO</div>
+                                <a href="service.html?page=digital-marketing" class="dropdown-item">
+                                    <div class="dropdown-icon">📈</div>
+                                    <div class="dropdown-text">
+                                        <span>Digital Marketing</span>
+                                        <span>Ads, social, email, CRO</span>
+                                    </div>
+                                </a>
+                                <a href="service.html?page=seo" class="dropdown-item">
+                                    <div class="dropdown-icon">🔍</div>
+                                    <div class="dropdown-text">
+                                        <span>SEO</span>
+                                        <span>Rank higher, grow faster</span>
+                                    </div>
+                                </a>
+                                <a href="service.html?page=aeo" class="dropdown-item">
+                                    <div class="dropdown-icon">🗣️</div>
+                                    <div class="dropdown-text">
+                                        <span>AEO</span>
+                                        <span>Answer Engine Optimization</span>
+                                    </div>
+                                </a>
+                                <a href="service.html?page=geo" class="dropdown-item">
+                                    <div class="dropdown-icon">🤖</div>
+                                    <div class="dropdown-text">
+                                        <span>GEO</span>
+                                        <span>Generative Engine Optimization</span>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="navbar__dropdown-column">
+                                <div class="dropdown-label">Content & Media</div>
+                                <a href="service.html?page=video-2d-3d" class="dropdown-item">
+                                    <div class="dropdown-icon">🎬</div>
+                                    <div class="dropdown-text">
+                                        <span>2D / 3D Video</span>
+                                        <span>Animation & production</span>
+                                    </div>
+                                </a>
+                                <a href="service.html?page=content-creator" class="dropdown-item">
+                                    <div class="dropdown-icon">✍️</div>
+                                    <div class="dropdown-text">
+                                        <span>Content Creator</span>
+                                        <span>Videos, blogs, graphics</span>
+                                    </div>
+                                </a>
+                                <a href="service.html?page=printing" class="dropdown-item">
+                                    <div class="dropdown-icon">🖨️</div>
+                                    <div class="dropdown-text">
+                                        <span>Printing Solutions</span>
+                                        <span>Cards, brochures, packaging</span>
+                                    </div>
+                                </a>
+                            </div>
+                            
+                            <div class="navbar__dropdown-column">
+                                <div class="dropdown-label">Infrastructure</div>
+                                <a href="service.html?page=professional-email" class="dropdown-item">
+                                    <div class="dropdown-icon">📧</div>
+                                    <div class="dropdown-text">
+                                        <span>Professional Email</span>
+                                        <span>Google Workspace, Microsoft</span>
+                                    </div>
+                                </a>
+                                <a href="service.html?page=hosting" class="dropdown-item">
+                                    <div class="dropdown-icon">☁️</div>
+                                    <div class="dropdown-text">
+                                        <span>Web Hosting</span>
+                                        <span>Fast, secure, managed</span>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </li>
                     <li><a href="about.html" class="nav-link active">About Us</a></li>
