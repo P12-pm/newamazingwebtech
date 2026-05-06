@@ -283,7 +283,7 @@
             position: fixed;
             inset: 0;
             background: rgba(0, 0, 0, 0.97);
-            z-index: 100;
+            z-index: 2000;
             flex-direction: column;
             align-items: center;
             justify-content: center;
@@ -395,6 +395,7 @@
             gap: 12px;
             padding: 12px 16px;
             border-radius: 10px;
+            font-family: 'Copperplate', 'Papyrus', fantasy;
             font-size: 14px;
             font-weight: 500;
             color: rgba(255, 255, 255, 0.7);
@@ -457,6 +458,7 @@
         }
 
         .dropdown-label {
+            font-family: 'Copperplate', 'Papyrus', fantasy;
             font-size: 10px;
             text-transform: uppercase;
             letter-spacing: 1.5px;
@@ -507,7 +509,9 @@
                 transition: color 0.2s;
             }
 
-            .mobile-dropdown-toggle:hover { color: #fff; }
+            .mobile-dropdown-toggle:hover {
+                color: #fff;
+            }
 
             .mobile-dropdown-toggle svg {
                 width: 20px;
@@ -962,7 +966,7 @@
                 text-align: center;
             }
         }
-    
+
         /* ── Modern Floating Navbar ── */
         .navbar-wrapper {
             position: fixed;
@@ -978,7 +982,7 @@
         .navbar-wrapper.scrolled {
             padding: 10px 24px;
         }
-        
+
         .navbar-new {
             pointer-events: auto;
             max-width: 1200px;
@@ -1009,6 +1013,7 @@
             height: 60px;
             text-decoration: none;
             transition: transform 0.3s;
+            flex: 1;
         }
 
         .nav-logo:hover {
@@ -1035,9 +1040,11 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 14px;
-            font-weight: 500;
+            color: rgba(255, 255, 255, 0.75);
+            font-family: 'Copperplate', 'Papyrus', fantasy;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
             text-decoration: none;
             padding: 10px 18px;
             border-radius: 9999px;
@@ -1057,7 +1064,9 @@
         .nav-actions {
             display: flex;
             align-items: center;
+            justify-content: flex-end;
             gap: 12px;
+            flex: 1;
         }
 
         .nav-btn {
@@ -1066,8 +1075,10 @@
             justify-content: center;
             background: linear-gradient(135deg, #fff, #e0e0e0);
             color: #000;
-            font-size: 14px;
-            font-weight: 600;
+            font-family: 'Copperplate', 'Papyrus', fantasy;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
             text-decoration: none;
             padding: 10px 24px;
             border-radius: 9999px;
@@ -1085,42 +1096,76 @@
             .navbar-wrapper {
                 padding: 16px;
             }
+
             .navbar-wrapper.scrolled {
                 padding: 10px 16px;
             }
+
             .navbar-new {
                 padding: 10px 14px 10px 20px;
             }
+
             .nav-link {
                 padding: 8px 12px;
             }
+
             .nav-btn {
                 padding: 8px 20px;
             }
         }
 
         @media (max-width: 768px) {
+            .navbar-wrapper {
+                padding: 16px 16px 0 !important;
+            }
+
+            .navbar-new {
+                border-radius: 20px;
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                padding: 10px 16px;
+                background: rgba(15, 15, 15, 0.85);
+                backdrop-filter: blur(32px);
+                -webkit-backdrop-filter: blur(32px);
+                box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-logo {
+                height: 36px;
+            }
+
             .nav-links {
                 display: none;
             }
+
             .nav-btn {
                 display: none;
             }
         }
 
-    
+
         /* ── 1. Custom Cursor ── */
         .cursor-dot {
-            position: fixed; top: 0; left: 0; z-index: 99999;
-            width: 6px; height: 6px; border-radius: 50%;
-            background: #fff; pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 99999;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #fff;
+            pointer-events: none;
             transform: translate(-50%, -50%);
             transition: width 0.2s, height 0.2s, background 0.2s;
         }
 
         .cursor-outline {
-            position: fixed; top: 0; left: 0; z-index: 99998;
-            width: 36px; height: 36px; border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 99998;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
             border: 1px solid rgba(255, 255, 255, 0.4);
             pointer-events: none;
             transform: translate(-50%, -50%);
@@ -1128,21 +1173,26 @@
         }
 
         .cursor-dot.hovering {
-            width: 40px; height: 40px;
+            width: 40px;
+            height: 40px;
             background: rgba(255, 255, 255, 0.08);
             mix-blend-mode: difference;
         }
 
         .cursor-outline.hovering {
-            width: 60px; height: 60px;
+            width: 60px;
+            height: 60px;
             border-color: rgba(255, 255, 255, 0.15);
             background: rgba(255, 255, 255, 0.03);
         }
 
         @media (pointer: coarse) {
-            .cursor-dot, .cursor-outline { display: none !important; }
-        }
 
+            .cursor-dot,
+            .cursor-outline {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 
@@ -1166,21 +1216,32 @@
         <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
             <button class="mobile-dropdown-toggle" id="mobileDropdownBtn" onclick="toggleMobileDropdown()">
                 Services
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
             </button>
-            <div id="mobileDropdownList" style="display:none;flex-direction:column;align-items:center;gap:14px;padding:10px 0;">
-                <a href="service.html?page=web-design" onclick="closeMobileMenu()" style="font-size:20px;">💻 Website Design</a>
+            <div id="mobileDropdownList"
+                style="display:none;flex-direction:column;align-items:center;gap:14px;padding:10px 0;">
+                <a href="service.html?page=web-design" onclick="closeMobileMenu()" style="font-size:20px;">💻 Website
+                    Design</a>
                 <a href="service.html?page=ui-ux" onclick="closeMobileMenu()" style="font-size:20px;">✨ UI/UX Design</a>
-                <a href="service.html?page=mobile-app" onclick="closeMobileMenu()" style="font-size:20px;">📱 Mobile App</a>
+                <a href="service.html?page=mobile-app" onclick="closeMobileMenu()" style="font-size:20px;">📱 Mobile
+                    App</a>
                 <a href="service.html?page=branding" onclick="closeMobileMenu()" style="font-size:20px;">🎯 Branding</a>
-                <a href="service.html?page=digital-marketing" onclick="closeMobileMenu()" style="font-size:20px;">📈 Digital Marketing</a>
+                <a href="service.html?page=digital-marketing" onclick="closeMobileMenu()" style="font-size:20px;">📈
+                    Digital Marketing</a>
                 <a href="service.html?page=seo" onclick="closeMobileMenu()" style="font-size:20px;">🔍 SEO</a>
                 <a href="service.html?page=aeo" onclick="closeMobileMenu()" style="font-size:20px;">🗣️ AEO</a>
                 <a href="service.html?page=geo" onclick="closeMobileMenu()" style="font-size:20px;">🤖 GEO</a>
-                <a href="service.html?page=video-2d-3d" onclick="closeMobileMenu()" style="font-size:20px;">🎬 2D/3D Video</a>
-                <a href="service.html?page=content-creator" onclick="closeMobileMenu()" style="font-size:20px;">✍️ Content Creator</a>
-                <a href="service.html?page=printing" onclick="closeMobileMenu()" style="font-size:20px;">🖨️ Printing</a>
-                <a href="service.html?page=professional-email" onclick="closeMobileMenu()" style="font-size:20px;">📧 Professional Email</a>
+                <a href="service.html?page=video-2d-3d" onclick="closeMobileMenu()" style="font-size:20px;">🎬 2D/3D
+                    Video</a>
+                <a href="service.html?page=content-creator" onclick="closeMobileMenu()" style="font-size:20px;">✍️
+                    Content Creator</a>
+                <a href="service.html?page=printing" onclick="closeMobileMenu()" style="font-size:20px;">🖨️
+                    Printing</a>
+                <a href="service.html?page=professional-email" onclick="closeMobileMenu()" style="font-size:20px;">📧
+                    Professional Email</a>
                 <a href="service.html?page=hosting" onclick="closeMobileMenu()" style="font-size:20px;">☁️ Hosting</a>
             </div>
         </div>
@@ -1190,23 +1251,27 @@
 
     <!-- Hero -->
     <section class="hero" aria-label="Page Hero">
-        <video class="hero__video" autoplay loop muted playsinline src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260217_030345_246c0224-10a4-422c-b324-070b7c0eceda.mp4"></video>
+        <video class="hero__video" autoplay loop muted playsinline
+            src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260217_030345_246c0224-10a4-422c-b324-070b7c0eceda.mp4"></video>
         <div class="hero__video-overlay"></div>
 
-        
+
         <!-- New Floating Premium Navbar -->
         <div class="navbar-wrapper" id="navbarWrapper">
             <nav class="navbar-new" role="navigation" aria-label="Primary Navigation">
                 <a href="index.html" class="nav-logo" aria-label="Amazing WebTech Home">
                     <img src="logo2.png" alt="Amazing WebTech">
                 </a>
-                
+
                 <ul class="nav-links" role="list">
                     <li><a href="index.html" class="nav-link">Home</a></li>
                     <li class="navbar__dropdown-wrap">
                         <a href="service.html" class="nav-link">
                             Services
-                            <svg class="navbar__dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            <svg class="navbar__dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
                         </a>
                         <div class="navbar__dropdown">
                             <div class="navbar__dropdown-column">
@@ -1297,7 +1362,7 @@
                                     </div>
                                 </a>
                             </div>
-                            
+
                             <div class="navbar__dropdown-column">
                                 <div class="dropdown-label">Infrastructure</div>
                                 <a href="service.html?page=professional-email" class="dropdown-item">
@@ -1324,7 +1389,8 @@
                 <div class="nav-actions">
                     <a href="contact.html" class="nav-btn" aria-label="Get Started">Get Started</a>
                     <button class="mobile-menu-btn" onclick="openMobileMenu()" aria-label="Open Menu">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round">
                             <line x1="3" y1="6" x2="21" y2="6"></line>
                             <line x1="3" y1="12" x2="21" y2="12"></line>
                             <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -1571,7 +1637,8 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-inner">
-            <img src="logo-dark.png" alt="Amazing WebTech" style="height: 48px; margin-right: auto; margin-bottom: 15px;">
+            <img src="logo-dark.png" alt="Amazing WebTech"
+                style="height: 48px; margin-right: auto; margin-bottom: 15px;">
             <p class="footer-text">&copy; 2026 Amazing Webtech. All Rights Reserved.</p>
             <ul class="footer-links">
                 <li><a href="index.html">Home</a></li>
@@ -1593,9 +1660,9 @@
         }
 
         // ── Desktop Navbar Dropdown ──
-        (function() {
+        (function () {
             var wraps = document.querySelectorAll('.navbar__dropdown-wrap');
-            wraps.forEach(function(wrap) {
+            wraps.forEach(function (wrap) {
                 var dropdown = wrap.querySelector('.navbar__dropdown');
                 var closeTimer;
 
@@ -1610,16 +1677,16 @@
                     return false;
                 }
 
-                wrap.addEventListener('mouseenter', function() {
+                wrap.addEventListener('mouseenter', function () {
                     clearTimeout(closeTimer);
                     wrap.classList.add('open');
                 });
 
-                document.addEventListener('mousemove', function(e) {
+                document.addEventListener('mousemove', function (e) {
                     if (!wrap.classList.contains('open')) return;
                     if (!isOverZone(e.clientX, e.clientY)) {
                         clearTimeout(closeTimer);
-                        closeTimer = setTimeout(function() {
+                        closeTimer = setTimeout(function () {
                             wrap.classList.remove('open');
                         }, 100);
                     } else {
@@ -1628,9 +1695,9 @@
                 });
             });
 
-            document.addEventListener('click', function(e) {
+            document.addEventListener('click', function (e) {
                 if (!e.target.closest('.navbar__dropdown-wrap')) {
-                    wraps.forEach(function(w) { w.classList.remove('open'); });
+                    wraps.forEach(function (w) { w.classList.remove('open'); });
                 }
             });
         })();
@@ -1683,7 +1750,7 @@
 
         const sc = document.querySelector('.stats-container');
         if (sc) statsObserver.observe(sc);
-    
+
         // ── 1. Custom Cursor ──
         var cursorDot = document.getElementById('cursorDot');
         var cursorOutline = document.getElementById('cursorOutline');
@@ -1691,7 +1758,7 @@
             var mouseX = 0, mouseY = 0;
             var outlineX = 0, outlineY = 0;
 
-            document.addEventListener('mousemove', function(e) {
+            document.addEventListener('mousemove', function (e) {
                 mouseX = e.clientX;
                 mouseY = e.clientY;
                 cursorDot.style.left = mouseX + 'px';
@@ -1709,12 +1776,12 @@
 
             // Hover effect on interactive elements
             var interactiveElements = document.querySelectorAll('a, button, .feature-card, .portfolio-item, .filter-btn, .dropdown-item, input, textarea');
-            interactiveElements.forEach(function(el) {
-                el.addEventListener('mouseenter', function() {
+            interactiveElements.forEach(function (el) {
+                el.addEventListener('mouseenter', function () {
                     cursorDot.classList.add('hovering');
                     cursorOutline.classList.add('hovering');
                 });
-                el.addEventListener('mouseleave', function() {
+                el.addEventListener('mouseleave', function () {
                     cursorDot.classList.remove('hovering');
                     cursorOutline.classList.remove('hovering');
                 });
