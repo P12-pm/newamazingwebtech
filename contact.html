@@ -9,7 +9,7 @@
         content="Get in touch with Amazing WebTech. Let's discuss how we can help grow your business online." />
 
     <link rel="preconnect" href="https://api.fontshare.com" />
-    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
     <style>
         *,
@@ -20,11 +20,12 @@
             padding: 0;
         }
 
+        html { scroll-behavior: smooth; }
         html,
         body {
             height: 100%;
             background: #000;
-            font-family: 'General Sans', sans-serif;
+            font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
             color: #fff;
@@ -217,7 +218,7 @@
             text-align: center;
             padding: 100px 24px 80px;
             gap: 20px;
-            font-family: 'Copperplate', 'Papyrus', fantasy;
+            font-family: 'Poppins', sans-serif;
         }
 
         .hero__badge {
@@ -395,7 +396,7 @@
             gap: 12px;
             padding: 12px 16px;
             border-radius: 10px;
-            font-family: 'Copperplate', 'Papyrus', fantasy;
+            font-family: 'Poppins', sans-serif;
             font-size: 14px;
             font-weight: 500;
             color: rgba(255, 255, 255, 0.7);
@@ -458,7 +459,7 @@
         }
 
         .dropdown-label {
-            font-family: 'Copperplate', 'Papyrus', fantasy;
+            font-family: 'Poppins', sans-serif;
             font-size: 10px;
             text-transform: uppercase;
             letter-spacing: 1.5px;
@@ -582,7 +583,7 @@
 
         .contact-card-icon {
             width: 60px;
-            height: 60px;
+            height: 85px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.05);
             display: flex;
@@ -1318,7 +1319,7 @@
             -webkit-backdrop-filter: blur(28px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 9999px;
-            padding: 12px 16px 12px 24px;
+            padding: 8px 12px 8px 20px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             transition: all 0.4s ease;
         }
@@ -1332,7 +1333,7 @@
         .nav-logo {
             display: flex;
             align-items: center;
-            height: 60px;
+            height: 52px;
             text-decoration: none;
             transition: transform 0.3s;
             flex: 1;
@@ -1344,6 +1345,7 @@
 
         .nav-logo img {
             height: 100%;
+            max-height: 52px;
             width: auto;
             object-fit: contain;
         }
@@ -1363,7 +1365,7 @@
             align-items: center;
             gap: 6px;
             color: rgba(255, 255, 255, 0.75);
-            font-family: 'Copperplate', 'Papyrus', fantasy;
+            font-family: 'Poppins', sans-serif;
             font-size: 15px;
             font-weight: 600;
             letter-spacing: 0.5px;
@@ -1397,7 +1399,7 @@
             justify-content: center;
             background: linear-gradient(135deg, #fff, #e0e0e0);
             color: #000;
-            font-family: 'Copperplate', 'Papyrus', fantasy;
+            font-family: 'Poppins', sans-serif;
             font-size: 15px;
             font-weight: 700;
             letter-spacing: 0.5px;
@@ -1448,7 +1450,7 @@
             }
 
             .nav-logo {
-                height: 36px;
+                height: 52px;
             }
 
             .nav-links {
@@ -1485,7 +1487,7 @@
         }
 
         .cursor-outline.hovering {
-            width: 60px; height: 60px;
+            width: 60px; height: 85px;
             border-color: rgba(255, 255, 255, 0.15);
             background: rgba(255, 255, 255, 0.03);
         }
@@ -1503,56 +1505,11 @@
     <div class="cursor-dot" id="cursorDot"></div>
     <div class="cursor-outline" id="cursorOutline"></div>
 
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close Menu">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-        </button>
-        <a href="index.html" onclick="closeMobileMenu()">Home</a>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
-            <button class="mobile-dropdown-toggle" id="mobileDropdownBtn" onclick="toggleMobileDropdown()">
-                Services
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div id="mobileDropdownList" style="display:none;flex-direction:column;align-items:center;gap:14px;padding:10px 0;">
-                <a href="service.html?page=web-design" onclick="closeMobileMenu()" style="font-size:20px;">💻 Website Design</a>
-                <a href="service.html?page=ui-ux" onclick="closeMobileMenu()" style="font-size:20px;">✨ UI/UX Design</a>
-                <a href="service.html?page=mobile-app" onclick="closeMobileMenu()" style="font-size:20px;">📱 Mobile App</a>
-                <a href="service.html?page=branding" onclick="closeMobileMenu()" style="font-size:20px;">🎯 Branding</a>
-                <a href="service.html?page=digital-marketing" onclick="closeMobileMenu()" style="font-size:20px;">📈 Digital Marketing</a>
-                <a href="service.html?page=seo" onclick="closeMobileMenu()" style="font-size:20px;">🔍 SEO</a>
-                <a href="service.html?page=aeo" onclick="closeMobileMenu()" style="font-size:20px;">🗣️ AEO</a>
-                <a href="service.html?page=geo" onclick="closeMobileMenu()" style="font-size:20px;">🤖 GEO</a>
-                <a href="service.html?page=video-2d-3d" onclick="closeMobileMenu()" style="font-size:20px;">🎬 2D/3D Video</a>
-                <a href="service.html?page=content-creator" onclick="closeMobileMenu()" style="font-size:20px;">✍️ Content Creator</a>
-                <a href="service.html?page=printing" onclick="closeMobileMenu()" style="font-size:20px;">🖨️ Printing</a>
-                <a href="service.html?page=professional-email" onclick="closeMobileMenu()" style="font-size:20px;">📧 Professional Email</a>
-                <a href="service.html?page=hosting" onclick="closeMobileMenu()" style="font-size:20px;">☁️ Hosting</a>
-            </div>
-        </div>
-        <a href="about.html" onclick="closeMobileMenu()">About Us</a>
-        <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
-    </div>
-
-    <!-- Toast -->
-    <div class="toast" id="toast"></div>
-
-    <!-- Hero -->
-    <section class="hero" aria-label="Page Hero">
-        <video class="hero__video" autoplay loop muted playsinline src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260217_030345_246c0224-10a4-422c-b324-070b7c0eceda.mp4"></video>
-        <div class="hero__video-overlay"></div>
-
-        
-        <!-- New Floating Premium Navbar -->
+<!-- New Floating Premium Navbar -->
         <div class="navbar-wrapper" id="navbarWrapper">
             <nav class="navbar-new" role="navigation" aria-label="Primary Navigation">
                 <a href="index.html" class="nav-logo" aria-label="Amazing WebTech Home">
-                    <img src="logo2.png" alt="Amazing WebTech">
+                    <img src="logo2.webp" alt="Amazing WebTech">
                 </a>
                 
                 <ul class="nav-links" role="list">
@@ -1687,6 +1644,53 @@
                 </div>
             </nav>
         </div>
+
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close Menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <a href="index.html" onclick="closeMobileMenu()">Home</a>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+            <button class="mobile-dropdown-toggle" id="mobileDropdownBtn" onclick="toggleMobileDropdown()">
+                Services
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div id="mobileDropdownList" style="display:none;flex-direction:column;align-items:center;gap:14px;padding:10px 0;">
+                <a href="service.html?page=web-design" onclick="closeMobileMenu()" style="font-size:20px;">💻 Website Design</a>
+                <a href="service.html?page=ui-ux" onclick="closeMobileMenu()" style="font-size:20px;">✨ UI/UX Design</a>
+                <a href="service.html?page=mobile-app" onclick="closeMobileMenu()" style="font-size:20px;">📱 Mobile App</a>
+                <a href="service.html?page=branding" onclick="closeMobileMenu()" style="font-size:20px;">🎯 Branding</a>
+                <a href="service.html?page=digital-marketing" onclick="closeMobileMenu()" style="font-size:20px;">📈 Digital Marketing</a>
+                <a href="service.html?page=seo" onclick="closeMobileMenu()" style="font-size:20px;">🔍 SEO</a>
+                <a href="service.html?page=aeo" onclick="closeMobileMenu()" style="font-size:20px;">🗣️ AEO</a>
+                <a href="service.html?page=geo" onclick="closeMobileMenu()" style="font-size:20px;">🤖 GEO</a>
+                <a href="service.html?page=video-2d-3d" onclick="closeMobileMenu()" style="font-size:20px;">🎬 2D/3D Video</a>
+                <a href="service.html?page=content-creator" onclick="closeMobileMenu()" style="font-size:20px;">✍️ Content Creator</a>
+                <a href="service.html?page=printing" onclick="closeMobileMenu()" style="font-size:20px;">🖨️ Printing</a>
+                <a href="service.html?page=professional-email" onclick="closeMobileMenu()" style="font-size:20px;">📧 Professional Email</a>
+                <a href="service.html?page=hosting" onclick="closeMobileMenu()" style="font-size:20px;">☁️ Hosting</a>
+            </div>
+        </div>
+        <a href="about.html" onclick="closeMobileMenu()">About Us</a>
+        <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Hero -->
+    <section class="hero" aria-label="Page Hero">
+        <video class="hero__video" autoplay loop muted playsinline src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260217_030345_246c0224-10a4-422c-b324-070b7c0eceda.mp4"></video>
+        <div class="hero__video-overlay"></div>
+
+        
+        
 
 
         <div class="hero__content">
@@ -2047,7 +2051,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-inner">
-            <img src="logo-dark.png" alt="Amazing WebTech" style="height: 48px; margin-right: auto; margin-bottom: 15px;">
+            <img src="logo-dark.webp" alt="Amazing WebTech" style="height: 48px; margin-right: auto; margin-bottom: 15px;" loading="lazy">
             <p class="footer-text">&copy; 2026 Amazing Webtech. All Rights Reserved.</p>
             <ul class="footer-links">
                 <li><a href="index.html">Home</a></li>
@@ -2359,6 +2363,19 @@
         }
 
     </script>
+
+
+        // ── Navbar Scroll ──
+        var navbar = document.getElementById('navbarWrapper');
+        if (navbar) {
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 80) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+        }
 
 </body>
 
