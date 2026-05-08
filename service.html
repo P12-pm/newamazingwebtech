@@ -8,7 +8,9 @@
     <meta name="description" content="Professional digital services by Amazing WebTech." />
 
     <link rel="preconnect" href="https://api.fontshare.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&family=Montserrat:wght@400;700&family=Open+Sans:wght@300&display=swap"
+        rel="stylesheet" />
 
     <style>
         *,
@@ -137,70 +139,91 @@
             opacity: 0.75;
         }
 
-        .btn-pill {
+        /* ── Water Glass Button System (Enhanced) ── */
+        .btn-pill, .btn-gradient, .btn-outline, .nav-btn, .btn-gradient__inner, .btn-pill__inner, .submit-btn {
             position: relative;
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            padding: 14px 36px;
             border-radius: 9999px;
-            border: 0.6px solid rgba(255, 255, 255, 1);
-            background: transparent;
-            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             text-decoration: none;
-            outline: none;
-            transition: opacity 0.2s ease, transform 0.15s ease;
+            color: #fff !important;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            border-left: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 0 15px rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            z-index: 1;
         }
 
-        .btn-pill:hover {
-            opacity: 0.88;
-            transform: translateY(-1px);
-        }
-
-        .btn-pill:active {
-            transform: translateY(0);
-        }
-
-        .btn-pill::before {
+        .btn-pill::before, .btn-gradient::before, .btn-outline::before, .nav-btn::before, .submit-btn::before {
             content: '';
             position: absolute;
-            top: -4px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60%;
-            height: 14px;
-            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 70%);
-            filter: blur(4px);
-            border-radius: 50%;
-            z-index: 2;
-            pointer-events: none;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            z-index: -1;
+            transition: none;
         }
 
-        .btn-pill__inner {
-            position: relative;
-            z-index: 1;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+        .btn-pill:hover::before, .btn-gradient:hover::before, .btn-outline:hover::before, .nav-btn:hover::before, .submit-btn:hover::before {
+            left: 100%;
+            transition: left 0.8s ease-in-out;
+        }
+
+        .btn-pill:hover, .btn-gradient:hover, .btn-outline:hover, .nav-btn:hover, .submit-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Inner Highlights for 3D Glass Look */
+        .btn-pill::after, .btn-gradient::after, .btn-outline::after, .nav-btn::after, .submit-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
             border-radius: 9999px;
-            font-size: 14px;
-            font-weight: 500;
-            padding: 11px 29px;
-            white-space: nowrap;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%, rgba(255, 255, 255, 0.05) 100%);
+            pointer-events: none;
+            z-index: -1;
         }
 
-        .btn-pill--dark .btn-pill__inner {
-            background: #000;
-            color: #fff;
+        .btn-gradient, .btn-pill {
+            padding: 0;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
         }
 
-        .btn-pill--light {
-            border-color: rgba(255, 255, 255, 0.8);
+        .btn-gradient__inner, .btn-pill__inner {
+            width: 100%;
+            height: 100%;
         }
 
         .btn-pill--light .btn-pill__inner {
-            background: #fff;
-            color: #000;
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
         .hero__content {
@@ -220,7 +243,6 @@
         .hero__badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
             background: rgba(255, 255, 255, 0.10);
             border: 1px solid rgba(255, 255, 255, 0.20);
             border-radius: 20px;
@@ -231,13 +253,6 @@
             white-space: nowrap;
         }
 
-        .hero__badge-dot {
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background: #fff;
-            flex-shrink: 0;
-        }
 
         .hero__heading {
             font-size: 56px;
@@ -714,47 +729,378 @@
             }
         }
 
-        @media (max-width: 767px) {
-            .navbar {
-                padding: 20px 24px;
+            /* ── Consolidated Mobile Responsive ── */
+        @media (max-width: 768px) {
+            /* ── Modern Mobile Menu Design ── */
+            .mobile-menu {
+                position: fixed;
+                inset: 0;
+                background: rgba(10, 10, 10, 0.85);
+                backdrop-filter: blur(40px);
+                -webkit-backdrop-filter: blur(40px);
+                z-index: 3000;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 100px 40px 60px;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+                transform: translateX(100%);
             }
 
-            .navbar__links {
-                display: none;
+            .mobile-menu.open {
+                opacity: 1;
+                visibility: visible;
+                transform: translateX(0);
+            }
+
+            .mobile-menu-content {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .mobile-menu a {
+                font-family: 'Montserrat', sans-serif;
+                font-size: 32px;
+                font-weight: 500;
+                color: #fff;
+                text-decoration: none;
+                letter-spacing: -1px;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            }
+
+            .mobile-menu.open a {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .mobile-menu.open a:nth-child(1) { transition-delay: 0.1s; }
+            .mobile-menu.open a:nth-child(2) { transition-delay: 0.2s; }
+            .mobile-menu.open a:nth-child(3) { transition-delay: 0.3s; }
+            .mobile-menu.open a:nth-child(4) { transition-delay: 0.4s; }
+            .mobile-menu.open a:nth-child(5) { transition-delay: 0.5s; }
+            .mobile-menu.open a:nth-child(6) { transition-delay: 0.6s; }
+
+            .mobile-menu-footer {
+                margin-top: auto;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                padding-top: 40px;
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .mobile-socials {
+                display: flex;
+                gap: 20px;
+            }
+
+            .mobile-socials a {
+                font-size: 20px !important;
+                opacity: 0.6 !important;
+                transform: none !important;
+                transition: opacity 0.3s !important;
+            }
+
+            .mobile-socials a:hover {
+                opacity: 1 !important;
             }
 
             .mobile-menu-btn {
-                display: block;
+                display: flex;
+                position: relative;
+                width: 40px;
+                height: 40px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                z-index: 3001;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 6px;
             }
 
-            .hero__heading {
-                font-size: 36px;
+            .burger-line {
+                width: 28px;
+                height: 2px;
+                background-color: #fff;
+                transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+                border-radius: 2px;
+            }
+
+            .mobile-menu-btn.active .burger-line:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .mobile-menu-btn.active .burger-line:nth-child(2) {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+
+            .mobile-menu-btn.active .burger-line:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .mobile-menu-header {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                padding: 40px;
+                display: flex;
+                flex-direction: row-reverse;
+                align-items: center;
+                justify-content: space-between;
+                z-index: 3002;
+            }
+
+            .mobile-menu-logo {
+                height: 40px;
+                opacity: 0;
+                transform: translateX(20px);
+                transition: all 0.5s ease 0.2s;
+            }
+
+            .mobile-menu.open .mobile-menu-logo {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            .mobile-menu-close {
+                position: relative;
+                top: auto;
+                right: auto;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.1);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: all 0.3s;
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+
+            .mobile-menu.open .mobile-menu-close {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            .mobile-menu-close:hover {
+                background: rgba(255, 255, 255, 0.2);
+                transform: rotate(90deg);
+            }
+
+            .mobile-dropdown-btn {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                background: none;
+                border: none;
+                padding: 0;
+                color: #fff;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 32px;
+                font-weight: 500;
+                letter-spacing: -1px;
+                cursor: pointer;
+                text-align: left;
+                transition: all 0.3s;
+            }
+
+            .mobile-dropdown-arrow {
+                width: 24px;
+                height: 24px;
+                transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+                opacity: 0.5;
+            }
+
+            .mobile-dropdown-btn.active {
+                color: rgba(255, 255, 255, 0.8);
+            }
+
+            .mobile-dropdown-btn.active .mobile-dropdown-arrow {
+                transform: rotate(180deg);
+                opacity: 1;
+            }
+
+            .mobile-dropdown-content {
+                max-height: 0;
+                overflow: hidden;
+                transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                padding-left: 20px;
+                border-left: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .mobile-dropdown-btn.active + .mobile-dropdown-content {
+                max-height: 800px;
+                margin-top: 20px;
+                margin-bottom: 10px;
+            }
+
+            .mobile-dropdown-item {
+                font-size: 16px !important;
+                font-weight: 400 !important;
+                opacity: 0.6 !important;
+                color: #fff;
+                text-decoration: none;
+                transform: none !important;
+                transition: all 0.3s !important;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .mobile-dropdown-item:hover {
+                opacity: 1 !important;
+                padding-left: 5px;
+            }
+
+            .mobile-dropdown-icon {
+                font-size: 18px;
+                width: 24px;
+                display: inline-block;
+                text-align: center;
+            }
+
+            .navbar-wrapper {
+                padding: 16px 16px 0 !important;
+            }
+
+            .navbar-new {
+                border-radius: 20px;
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                padding: 10px 16px;
+                background: rgba(15, 15, 15, 0.85);
+                backdrop-filter: blur(32px);
+                -webkit-backdrop-filter: blur(32px);
+                box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-logo {
+                height: 52px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-btn {
+                display: none;
             }
 
             .hero__content {
-                padding: 80px 24px 60px;
+                padding-top: 180px;
+                padding-bottom: 100px;
+                padding-left: 60px;
+                padding-right: 60px;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .hero__heading {
+                font-size: 35px;
+                line-height: 1.1;
+                margin-bottom: 1px;
+                width: 100%;
+            }
+
+            .hero__subtitle {
+                font-size: 15px;
+                line-height: 1.6;
+                margin-top: 1px;
+                max-width: 100%;
+            }
+
+            .hero__cta {
+                flex-direction: column;
+                gap: 15px;
+                width: 100%;
+                max-width: 280px;
+                margin-top: 20px;
+            }
+
+            .hero__badge {
+                font-size: 12px;
+                margin-bottom: 10px;
+            }
+
+            .scroll-indicator {
+                display: none;
             }
 
             .section {
-                padding: 70px 24px;
+                padding: 80px 50px;
+            }
+
+            .section-header {
+                margin-bottom: 30px;
             }
 
             .section-title {
                 font-size: 28px;
             }
+        }
 
-            .overview-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
+        /* ── Hero Ticker ── */
+        .hero__ticker {
+            position: absolute;
+            bottom: 60px;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            z-index: 5;
+            white-space: nowrap;
+            user-select: none;
+            pointer-events: none;
+            opacity: 0.12;
+        }
+
+        .ticker__track {
+            display: inline-block;
+            white-space: nowrap;
+            will-change: transform;
+            animation: tickerScroll 60s linear infinite;
+        }
+
+        .ticker__item {
+            display: inline-block;
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            color: transparent;
+            -webkit-text-stroke: 1.2px rgba(255, 255, 255, 0.4);
+            margin-right: 50px;
+            letter-spacing: 3px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        @keyframes tickerScroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        @media (max-width: 768px) {
+            .hero__ticker {
+                bottom: 80px;
             }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-inner {
-                flex-direction: column;
-                text-align: center;
+            .ticker__item {
+                font-size: 4rem;
+                -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+                margin-right: 25px;
             }
         }
 
@@ -1114,51 +1460,119 @@
                 </ul>
 
                 <div class="nav-actions">
-                    <a href="contact.html" class="nav-btn" aria-label="Get Started">Get Started</a>
                     <button class="mobile-menu-btn" onclick="openMobileMenu()" aria-label="Open Menu">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                            <line x1="3" y1="6" x2="21" y2="6"></line>
-                            <line x1="3" y1="12" x2="21" y2="12"></line>
-                            <line x1="3" y1="18" x2="21" y2="18"></line>
-                        </svg>
+                        <div class="burger-line"></div>
+                        <div class="burger-line"></div>
+                        <div class="burger-line"></div>
                     </button>
                 </div>
             </nav>
         </div>
 
-
     <div class="mobile-menu" id="mobileMenu">
-        <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close Menu">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-        </button>
-        <a href="index.html" onclick="closeMobileMenu()">Home</a>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
-            <button class="mobile-dropdown-toggle" id="mobileDropdownBtn" onclick="toggleMobileDropdown()">
-                Services
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <div class="mobile-menu-header">
+            <img src="logo-dark.webp" alt="Amazing Webtech" class="mobile-menu-logo">
+            <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close Menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
             </button>
-            <div id="mobileDropdownList" style="display:none;flex-direction:column;align-items:center;gap:14px;padding:10px 0;">
-                <a href="service.html?page=web-design" onclick="closeMobileMenu()" style="font-size:20px;">💻 Website Design</a>
-                <a href="service.html?page=ui-ux" onclick="closeMobileMenu()" style="font-size:20px;">✨ UI/UX Design</a>
-                <a href="service.html?page=mobile-app" onclick="closeMobileMenu()" style="font-size:20px;">📱 Mobile App</a>
-                <a href="service.html?page=branding" onclick="closeMobileMenu()" style="font-size:20px;">🎯 Branding</a>
-                <a href="service.html?page=digital-marketing" onclick="closeMobileMenu()" style="font-size:20px;">📈 Digital Marketing</a>
-                <a href="service.html?page=seo" onclick="closeMobileMenu()" style="font-size:20px;">🔍 SEO</a>
-                <a href="service.html?page=aeo" onclick="closeMobileMenu()" style="font-size:20px;">🗣️ AEO</a>
-                <a href="service.html?page=geo" onclick="closeMobileMenu()" style="font-size:20px;">🤖 GEO</a>
-                <a href="service.html?page=video-2d-3d" onclick="closeMobileMenu()" style="font-size:20px;">🎬 2D/3D Video</a>
-                <a href="service.html?page=content-creator" onclick="closeMobileMenu()" style="font-size:20px;">✍️ Content Creator</a>
-                <a href="service.html?page=printing" onclick="closeMobileMenu()" style="font-size:20px;">🖨️ Printing</a>
-                <a href="service.html?page=professional-email" onclick="closeMobileMenu()" style="font-size:20px;">📧 Professional Email</a>
-                <a href="service.html?page=hosting" onclick="closeMobileMenu()" style="font-size:20px;">☁️ Hosting</a>
-            </div>
         </div>
-        <a href="about.html" onclick="closeMobileMenu()">About Us</a>
-        <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+
+        <div class="mobile-menu-content">
+            <a href="index.html" onclick="closeMobileMenu()">Home</a>
+            
+            <div class="mobile-dropdown-wrap">
+                <button class="mobile-dropdown-btn" onclick="toggleMobileDropdown(this)">
+                    Services
+                    <svg class="mobile-dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="mobile-dropdown-content">
+                    <a href="service.html?page=web-design" class="mobile-dropdown-item" onclick="closeMobileMenu()">
+                        <span class="mobile-dropdown-icon">💻</span> Website Design & Dev
+                    </a>
+                    <a href="service.html?page=ui-ux" class="mobile-dropdown-item" onclick="closeMobileMenu()">
+                        <span class="mobile-dropdown-icon">✨</span> UI/UX Design
+                    </a>
+                    <a href="service.html?page=mobile-app" class="mobile-dropdown-item" onclick="closeMobileMenu()">
+                        <span class="mobile-dropdown-icon">📱</span> Mobile App
+                    </a>
+                    <a href="service.html?page=branding" class="mobile-dropdown-item" onclick="closeMobileMenu()">
+                        <span class="mobile-dropdown-icon">🎯</span> Corporate Branding
+                    </a>
+                    <a href="service.html?page=digital-marketing" class="mobile-dropdown-item" onclick="closeMobileMenu()">
+                        <span class="mobile-dropdown-icon">📈</span> Digital Marketing
+                    </a>
+                    <a href="service.html?page=seo" class="mobile-dropdown-item" onclick="closeMobileMenu()">
+                        <span class="mobile-dropdown-icon">🔍</span> SEO
+                    </a>
+                    <a href="service.html?page=aeo" class="mobile-dropdown-item" onclick="closeMobileMenu()">
+                        <span class="mobile-dropdown-icon">🗣️</span> AEO
+                    </a>
+                    <a href="service.html?page=geo" class="mobile-dropdown-item" onclick="closeMobileMenu()">
+                        <span class="mobile-dropdown-icon">🤖</span> GEO
+                    </a>
+                    <a href="service.html?page=video-2d-3d" class="mobile-dropdown-item" onclick="closeMobileMenu()">
+                        <span class="mobile-dropdown-icon">🎬</span> 2D / 3D Video
+                    </a>
+                    <a href="service.html?page=content-creator" class="mobile-dropdown-item" onclick="closeMobileMenu()">
+                        <span class="mobile-dropdown-icon">✍️</span> Content Creator
+                    </a>
+                    <a href="service.html?page=printing" class="mobile-dropdown-item" onclick="closeMobileMenu()">
+                        <span class="mobile-dropdown-icon">🖨️</span> Printing Solutions
+                    </a>
+                    <a href="service.html?page=professional-email" class="mobile-dropdown-item" onclick="closeMobileMenu()">
+                        <span class="mobile-dropdown-icon">📧</span> Professional Email
+                    </a>
+                    <a href="service.html?page=hosting" class="mobile-dropdown-item" onclick="closeMobileMenu()">
+                        <span class="mobile-dropdown-icon">☁️</span> Web Hosting
+                    </a>
+                </div>
+            </div>
+
+            <a href="about.html" onclick="closeMobileMenu()">About Us</a>
+            <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+        </div>
+
+        <div class="mobile-menu-footer">
+            <div class="mobile-socials">
+                <a href="#" aria-label="Facebook">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                    </svg>
+                </a>
+                <a href="#" aria-label="Instagram">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                    </svg>
+                </a>
+                <a href="#" aria-label="Twitter">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                    </svg>
+                </a>
+            </div>
+            <a href="contact.html" class="btn-gradient" style="padding: 18px 40px; font-size: 14px; width: 100%;"
+                onclick="closeMobileMenu()">
+                <span class="btn-gradient__inner">LET'S WORK TOGETHER</span>
+            </a>
+        </div>
+    </div>
     </div>
 
     <section class="hero" aria-label="Page Hero">
@@ -1171,7 +1585,6 @@
 
         <div class="hero__content">
             <div class="hero__badge fade-in-up">
-                <span class="hero__badge-dot"></span>
                 <span id="heroBadgeText">Our Services</span>
             </div>
             <h1 class="hero__heading fade-in-up" id="heroHeading" style="transition-delay: 0.1s;">Service</h1>
@@ -1219,7 +1632,7 @@
     <footer class="footer">
         <div class="footer-inner">
             <img src="logo-dark.webp" alt="Amazing WebTech" style="height: 48px; margin-right: auto; margin-bottom: 15px;" loading="lazy">
-            <p class="footer-text">&copy; 2026 Amazing Webtech. All Rights Reserved.</p>
+            <p class="footer-text">&copy; 2021 Amazing Webtech. All Rights Reserved.</p>
             <ul class="footer-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
@@ -1233,11 +1646,20 @@
         // ── Mobile Menu ──
         function openMobileMenu() {
             document.getElementById('mobileMenu').classList.add('open');
+            document.querySelector('.mobile-menu-btn').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
         function closeMobileMenu() {
             document.getElementById('mobileMenu').classList.remove('open');
+            document.querySelector('.mobile-menu-btn').classList.remove('active');
             document.body.style.overflow = '';
+            // Reset dropdown if open
+            const dropdownBtn = document.querySelector('.mobile-dropdown-btn');
+            if(dropdownBtn) dropdownBtn.classList.remove('active');
+        }
+
+        function toggleMobileDropdown(btn) {
+            btn.classList.toggle('active');
         }
 
         // ── Desktop Navbar Dropdown ──
@@ -1272,18 +1694,6 @@
                 }
             });
         })();
-
-        // ── Mobile Dropdown Toggle ──
-        function toggleMobileDropdown() {
-            var btn = document.getElementById('mobileDropdownBtn');
-            var list = document.getElementById('mobileDropdownList');
-            btn.classList.toggle('open');
-            if (list.style.display === 'none' || !list.style.display) {
-                list.style.display = 'flex';
-            } else {
-                list.style.display = 'none';
-            }
-        }
 
         // ── Navbar Scroll ──
         const navbar = document.getElementById('navbar');
